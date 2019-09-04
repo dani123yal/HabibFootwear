@@ -172,6 +172,7 @@
     <Compile Include="Models\Habib.cs" />
     <Compile Include="Models\Outlet.cs" />
     <Compile Include="Models\Outlet_ShoeSizeColor.cs" />
+    <Compile Include="Models\RemainingPayment.cs" />
     <Compile Include="Models\Shoe.cs" />
     <Compile Include="Models\ShoeSizeColor_CustomerOrder.cs" />
     <Compile Include="Models\Shoe_Size.cs" />
@@ -179,10 +180,14 @@
     <Compile Include="Models\Size.cs" />
     <Compile Include="Models\TransferRecord.cs" />
     <Compile Include="Models\Transfer_ShoeSizeColor.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Models\VendorOrder.cs" />
     <Compile Include="Models\VendorOrder_ShoeSizeColor.cs" />
     <Compile Include="Models\VendorPayment.cs" />
+    <Compile Include="Models\webpages_Membership.cs" />
+    <Compile Include="Models\webpages_OAuthMembership.cs" />
+    <Compile Include="Models\webpages_Roles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
