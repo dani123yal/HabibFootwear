@@ -12,6 +12,7 @@ namespace HabeebFootwear.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public VendorOrder()
         {
+            RemainingPayments = new HashSet<RemainingPayment>();
             VendorPayments = new HashSet<VendorPayment>();
         }
 
@@ -32,6 +33,9 @@ namespace HabeebFootwear.Models
         public string paymentStatus { get; set; }
 
         public string paymentMode { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RemainingPayment> RemainingPayments { get; set; }
 
         public virtual Vendor Vendor { get; set; }
 
