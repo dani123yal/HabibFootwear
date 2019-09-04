@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 style="color:green;">Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CreateVendor","Vendor",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="box box-success">
         <div class="box-header with-border">
+            <h2 style="color:green;">Create</h2>
             <h3 class="box-title">Vendors</h3>
         </div>
         <div class="box-body">
@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-2">
-                        @Html.LabelFor(model => model.vendorName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <label>Vendor Name</label>
                     </div>
                     <div class="col-md-8">
                         @Html.EditorFor(model => model.vendorName, new { htmlAttributes = new { @class = "form-control" } })
@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-2">
-                        @Html.LabelFor(model => model.vendorCompany, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <label>Vendor Company</label>
                     </div>
                     <div class="col-md-8">
                         @Html.EditorFor(model => model.vendorCompany, new { htmlAttributes = new { @class = "form-control" } })
@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-2">
-                        @Html.LabelFor(model => model.vendorContactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <label>Vendor Contact No</label>
                     </div>
                     <div class="col-md-8">
                         @Html.EditorFor(model => model.vendorContactNo, new { htmlAttributes = new { @class = "form-control" } })
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-2">
-                        @Html.LabelFor(model => model.vendorAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <label>Vendor Address</label>
                     </div>
                     <div class="col-md-8">
                         @Html.EditorFor(model => model.vendorAddress, new { htmlAttributes = new { @class = "form-control" } })
