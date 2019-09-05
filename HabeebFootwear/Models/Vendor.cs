@@ -26,6 +26,7 @@ namespace HabeebFootwear.Models
         public string vendorContactNo { get; set; }
 
         public string vendorAddress { get; set; }
+        public byte DeleteStatus { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VendorOrder> VendorOrders { get; set; }

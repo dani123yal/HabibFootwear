@@ -33,26 +33,29 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
+                        <tr>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendor_Id)
-                                </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendor_Id)
+                            </td>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendorName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendorCompany)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendorContactNo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendorAddress)
-                                </td>
-
-                            </tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendorName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendorCompany)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendorContactNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendorAddress)
+                            </td>
+                            <td>
+                                <a href="Edit?id=@item.vendor_Id" class="btn btn-default btn-default"><span class="glyphicon glyphicon-edit"></span> </a>
+                                <a href="Delete?id=@item.vendor_Id" onclick="return confirm('Are You Sure to Delete Report?');" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-trash"></span> </a>
+                            </td>
+                        </tr>
 
                         }
 
