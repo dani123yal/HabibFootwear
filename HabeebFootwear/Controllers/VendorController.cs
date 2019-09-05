@@ -21,6 +21,12 @@ namespace HabeebFootwear.Controllers
         {
             return View();
         }
+        public ActionResult Edit(int id)
+        {
+            Vendor model = null;
+            return View();
+        
+        }
         [HttpPost]
         public ActionResult CreateVendor(Vendor model)
         {
