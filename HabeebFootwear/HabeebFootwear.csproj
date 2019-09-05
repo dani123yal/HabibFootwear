@@ -165,6 +165,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Miscellaneous\HabibDataClass.cs" />
     <Compile Include="Models\Batch.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\CustomerOrder.cs" />
@@ -7286,6 +7287,7 @@
     <Folder Include="Theme\AdminLTE-2.4.13\bower_components\ckeditor\plugins\sourcedialog\icons\hidpi\" />
     <Folder Include="Theme\AdminLTE-2.4.13\bower_components\ckeditor\plugins\templates\icons\hidpi\" />
     <Folder Include="Theme\AdminLTE-2.4.13\bower_components\ckeditor\plugins\uicolor\icons\hidpi\" />
+    <Folder Include="View_Modals\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
