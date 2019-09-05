@@ -1,0 +1,34 @@
+<script type="text/javascript">
+    $('.autoCompleteCNIC').keydown(function () {
+        $(this).val($(this).val().replace(/(\d{5})\-?(\d{7})\-?(\d{1})/, '$1-$2-$3'))
+    });
+
+    $('.autoCompleteNum').keydown(function () {
+        $(this).val($(this).val().replace(/(\d{4})\-?(\d{7})/, '$1-$2'))
+    });
+
+    $('.hide').hide(0);
+
+    $(document).ready(function () {
+        $('.selection').change(function () {
+            var hasStates = $(this).find("option:selected").attr("Value");
+            if (hasStates == 'operation manager') {
+                $('.hide').show(250);
+            }
+            else {
+                $('.hide').hide(250);
+            }
+        });
+    });
+</script>
+
+-------------------------- for modal data annotation write this type of code.
+
+ 
+        [Required(ErrorMessage = "CNIC is required.")]
+        [RegularExpression(@"^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$", ErrorMessage = "Invalid CNIC number use this e.g: xxxxx-xxxxxxx-x")]
+        public string CNIC { get; set; }
+
+        [Required(ErrorMessage = "Contact is required.")]
+        [RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{7})$", ErrorMessage = "Invalid Contact number use this e.g: xxxx-xxxxxxx")]
+        public string Contact_No { get; set; }
