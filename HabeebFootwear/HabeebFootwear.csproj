@@ -181,6 +181,10 @@
     <Compile Include="Migrations\201909051105051_Shoes_article_Unique.Designer.cs">
       <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.cs" />
+    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.Designer.cs">
+      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Miscellaneous\HabibDataClass.cs" />
     <Compile Include="Models\Batch.cs" />
@@ -7271,6 +7275,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Vendor\Create.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Vendor\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -7337,6 +7342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909051105051_Shoes_article_Unique.resx">
       <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051224224_Vednor_Name_set_Required.resx">
+      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
