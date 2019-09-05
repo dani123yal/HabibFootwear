@@ -20,6 +20,9 @@ namespace HabeebFootwear.Models
         public int shoe_Id { get; set; }
 
         [Required]
+        [MaxLength(20)]
+        [Index(IsUnique = true)]
+       
         public string shoeArticle { get; set; }
 
         public int? shoeCost { get; set; }
