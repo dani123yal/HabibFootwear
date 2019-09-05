@@ -24,8 +24,7 @@ namespace HabeebFootwear.Models
 
         public string vendorCompany { get; set; }
 
-        [Required(ErrorMessage = "Contact is required.")]
-        [RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{7})$", ErrorMessage = "Invalid Contact number use this e.g: xxxx-xxxxxxx")]
+        //[RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{7})$", ErrorMessage = "Invalid Contact number use this e.g: xxxx-xxxxxxx")]
         public string vendorContactNo { get; set; }
 
         public string vendorAddress { get; set; }
