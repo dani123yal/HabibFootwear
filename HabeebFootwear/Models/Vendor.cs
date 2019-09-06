@@ -19,13 +19,16 @@ namespace HabeebFootwear.Models
         [Key]
         public int vendor_Id { get; set; }
 
+        [Required(ErrorMessage = "Please Enter Vendor Name")]
         public string vendorName { get; set; }
 
         public string vendorCompany { get; set; }
 
+        //[RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{7})$", ErrorMessage = "Invalid Contact number use this e.g: xxxx-xxxxxxx")]
         public string vendorContactNo { get; set; }
 
         public string vendorAddress { get; set; }
+        public byte DeleteStatus { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VendorOrder> VendorOrders { get; set; }

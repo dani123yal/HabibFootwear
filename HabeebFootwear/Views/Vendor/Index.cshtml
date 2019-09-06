@@ -15,14 +15,7 @@
             </center>
         </div>
     </div>
-    <div id='myModal' class='modal'>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div id='myModalContent'></div>
-            </div>
-        </div>
 
-    </div>
     <!-- /.box-header -->
     <div class="box-body">
         <div class="table-responsive">
@@ -35,32 +28,38 @@
                             <th>Vendor Company</th>
                             <th>Vendor Contact No</th>
                             <th>Vendor Address</th>
-
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
+                            if (item.DeleteStatus == 0)
+                            {
+                        <tr>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendor_Id)
-                                </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendor_Id)
+                            </td>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendorName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendorCompany)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendorContactNo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.vendorAddress)
-                                </td>
-
-                            </tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendorName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendorCompany)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendorContactNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.vendorAddress)
+                            </td>
+                            <td>
+                                <a href="Vendor/Edit?id=@item.vendor_Id" class="btn btn-default btn-primary"><span style="color:white" class="glyphicon glyphicon-edit"> Edit</span> </a>
+                                <a href="Vendor/Delete?id=@item.vendor_Id" onclick="return confirm('Are You Sure to Delete Vendor?');" class="btn btn-danger btn-default"><span style="color:white" class="glyphicon glyphicon-trash"> Delete</span> </a>
+                            </td>
+                        </tr>
+                            }
 
                         }
 

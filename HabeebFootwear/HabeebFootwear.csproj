@@ -166,6 +166,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909051043231_InitialCreate.cs" />
+    <Compile Include="Migrations\201909051043231_InitialCreate.Designer.cs">
+      <DependentUpon>201909051043231_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.cs" />
+    <Compile Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.Designer.cs">
+      <DependentUpon>201909051044406_Vendor_DeleteStatus_Field_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.cs" />
+    <Compile Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.Designer.cs">
+      <DependentUpon>201909051047328_Vendor_DeleteStatus_Field_added_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051105051_Shoes_article_Unique.cs" />
+    <Compile Include="Migrations\201909051105051_Shoes_article_Unique.Designer.cs">
+      <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.cs" />
+    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.Designer.cs">
+      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Miscellaneous\HabibDataClass.cs" />
     <Compile Include="Models\Batch.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\CustomerOrder.cs" />
@@ -7254,6 +7276,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Vendor\Create.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Vendor\Edit.cshtml" />
     <Content Include="Views\Shoe\shoes.cshtml" />
     <Content Include="Views\Shoe\Details.cshtml" />
   </ItemGroup>
@@ -7289,6 +7312,7 @@
     <Folder Include="Theme\AdminLTE-2.4.13\bower_components\ckeditor\plugins\sourcedialog\icons\hidpi\" />
     <Folder Include="Theme\AdminLTE-2.4.13\bower_components\ckeditor\plugins\templates\icons\hidpi\" />
     <Folder Include="Theme\AdminLTE-2.4.13\bower_components\ckeditor\plugins\uicolor\icons\hidpi\" />
+    <Folder Include="View_Modals\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -7308,6 +7332,23 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909051043231_InitialCreate.resx">
+      <DependentUpon>201909051043231_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.resx">
+      <DependentUpon>201909051044406_Vendor_DeleteStatus_Field_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.resx">
+      <DependentUpon>201909051047328_Vendor_DeleteStatus_Field_added_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051105051_Shoes_article_Unique.resx">
+      <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051224224_Vednor_Name_set_Required.resx">
+      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
