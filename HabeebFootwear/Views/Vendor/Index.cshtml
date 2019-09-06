@@ -55,8 +55,8 @@
                                 @Html.DisplayFor(modelItem => item.vendorAddress)
                             </td>
                             <td>
-                                <a href="Vendor/Edit?id=@item.vendor_Id" class="btn btn-default btn-primary"><span style="color:white" class="glyphicon glyphicon-edit"> Edit</span> </a>
-                                <a href="Vendor/Delete?id=@item.vendor_Id" onclick="return confirm('Are You Sure to Delete Vendor?');" class="btn btn-danger btn-default"><span style="color:white" class="glyphicon glyphicon-trash"> Delete</span> </a>
+                                <a href="/Vendor/Edit?id=@item.vendor_Id" class="btn btn-default btn-primary"><span style="color:white" class="glyphicon glyphicon-edit"> Edit</span> </a>
+                                <a href="/Vendor/Delete?id=@item.vendor_Id" onclick="return confirm('Are You Sure to Delete Vendor?');" class="btn btn-danger btn-default"><span style="color:white" class="glyphicon glyphicon-trash"> Delete</span> </a>
                             </td>
                         </tr>
                             }
