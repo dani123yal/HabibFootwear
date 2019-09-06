@@ -24,6 +24,7 @@ namespace HabeebFootwear.Controllers
         [HttpPost]
         public ActionResult CreateVendor(Vendor model)
         {
+
             habib.Vendors.Add(model);
             habib.SaveChanges();
             return RedirectToAction("Index", "Vendor");
