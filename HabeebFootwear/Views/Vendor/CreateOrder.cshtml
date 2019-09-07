@@ -1,0 +1,92 @@
+﻿@model HabeebFootwear.View_Modals.VendorOrderViewModel
+
+@{
+    ViewBag.Title = "CreateOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h4>Vendor Order Details</h4>
+    </div>
+    <div class="box-body">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <Label class="control-label col-md-2">Order Date</Label>
+                <div class="col-md-10">
+                    <input type="date" name="dateOfOrder" value="@DateTime.Now" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.vovm_Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Select Vendor</label>
+                <div class="col-md-10">
+
+                    <select class="form-control" name="venID">
+                        @foreach (var item in Model.vendorsList)
+                        {
+                            <option value="@item.vendor_Id">@item.vendorName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-lg btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+<div class="box box-succes">
+    <div class="box-header with-border">
+        <h3>Shoes Details</h3>
+    </div>
+    <div class="box-body">
+        <div class="form-horizontal shoe_form">
+            <div class="form-group">
+                <label class="control-label col-md-2">No. of shoes</label>
+                <div class="col-md-8">
+                    <input type="number" id="shoesNo" placeholder="Select No of shoes" class="form-control" />
+                    <label class="">
+                        <input type="checkbox" name="name" value="" class="flat-red" style="position:absolute;opacity:0;" />
+                    </label>
+                    
+                </div>
+                <div class="col-md-2">
+                    <input type="button" name="name" value="Add" onclick="checkShoesNo()" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+<script>
+
+    function checkShoesNo() {
+        var no = document.getElementById("shoesNo").value;
+        for (var i = 0; i < no; i++) {
+            var divElement = document.createElement("div");
+            divElement.setAttribute("class", "form-group");
+            divElement.innerHTML += "<div class='col-md-8'>"+
+                "<input type = 'text' name = _"+i+" class='form-control' placeholder = 'enter article no' /> " +
+                "<div class='col-md-2'><input type='number' id='sizeNo' class='form-control' placeholder='enter article no' /></div>" +
+                "</div>";
+        }
+
+        document.getElementsByClassName("shoe_form")[0].append(divElement);
+
+    }
+
+</script>
