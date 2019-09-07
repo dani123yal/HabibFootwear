@@ -5,16 +5,30 @@
         if (HabeebFootwear.Controllers.ShoeController.shoe_Sizes != null)
         {
 
-
-
-            foreach (HabeebFootwear.Models.Shoe_Size v in HabeebFootwear.Controllers.ShoeController.shoe_Sizes)
+            if (HabeebFootwear.Controllers.ShoeController.shoe_Sizes.Count != 0)
             {
+
+                foreach (HabeebFootwear.Models.Shoe_Size v in HabeebFootwear.Controllers.ShoeController.shoe_Sizes)
+                {
                 <label>
 
-                    <input type="radio" class="flat-red" name="ShoeSize" value="" />
+                    <input type="radio" class="flat-red" name="hello" id="@v.shoeSize_Id"    />
                     @v.Size.sizeNo
                     <br />
                 </label>
+
+                <script>
+                    $('#@v.shoeSize_Id').on('ifChecked', function (event) {
+                    bbb(@v.shoeSize_Id);
+                    });
+                </script>
+
+
+                }
+            }
+            else
+            {
+                <label>No sizes available for the selected Article!</label>
             }
         }
         else
@@ -27,4 +41,36 @@
     
 </form>
 
+<hr />
+
+<script type="text/javascript">
+
+    function bbb(id) {
+       // alert('ran');
+
+       
+
+        $(function () {
+
+
+            $('.colors1').load('/Shoe/Colors/' + id, function (responseText, textStatus, XMLHttpRequest) {
+                if (textStatus == "success") {
+                    // all good!
+                    
+                    $('.flat-red1').iCheck({ checkboxClass: 'icheckbox_flat-green', radioClass: 'iradio_flat-green' });
+                }
+                if (textStatus == "error") {
+                    // oh noes!
+                }
+            });
+
+
+
+
+
+
+
+        });
+    }
+</script>
 

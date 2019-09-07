@@ -15,11 +15,22 @@
                 <h4 class="modal-title">Default Modal</h4>
             </div>
             <div class="modal-body">
+               
+
+
                 @{
+
+
                     <div class="target">
 
                     </div>
+                    <div class="colors1">
 
+                    </div>
+
+                    <div class="quantity">
+
+                    </div>
 
 
                 }
@@ -124,11 +135,14 @@
     function aaa(id) {
 
         $(function () {
-            
+
+            $('.colors1').html('');
 
             $('.target').load('/Shoe/Details/' + id, function (responseText, textStatus, XMLHttpRequest) {
                 if (textStatus == "success") {
                     // all good!
+
+                   
                     $('#modal-default').modal('toggle');
                     $('.flat-red').iCheck({ checkboxClass: 'icheckbox_flat-green', radioClass: 'iradio_flat-green' });
                 }

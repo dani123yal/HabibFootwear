@@ -26,8 +26,7 @@ namespace HabeebFootwear.Models
 
         public int? salary { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? dateOfHiring { get; set; }
+        public string dateOfHiring { get; set; }
 
         public string typeOfEmployee { get; set; }
 
