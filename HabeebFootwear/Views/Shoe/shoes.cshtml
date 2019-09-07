@@ -16,12 +16,11 @@
             </div>
             <div class="modal-body">
                 @{
+                    <div class="target">
 
-                <div class="target">
-                    Html.RenderPartial("Details");
-                </div>
-                    
-                    
+                    </div>
+
+
 
                 }
 
@@ -131,6 +130,7 @@
                 if (textStatus == "success") {
                     // all good!
                     $('#modal-default').modal('toggle');
+                    $('.flat-red').iCheck({ checkboxClass: 'icheckbox_flat-green', radioClass: 'iradio_flat-green' });
                 }
                 if (textStatus == "error") {
                     // oh noes!
