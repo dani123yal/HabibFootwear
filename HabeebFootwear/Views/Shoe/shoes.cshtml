@@ -135,7 +135,8 @@
     function aaa(id) {
 
         $(function () {
-
+            $('.quantity').html('');
+   
             $('.colors1').html('');
 
             $('.target').load('/Shoe/Details/' + id, function (responseText, textStatus, XMLHttpRequest) {

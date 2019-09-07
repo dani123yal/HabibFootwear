@@ -46,12 +46,14 @@
 <script type="text/javascript">
 
     function bbb(id) {
-       // alert('ran');
+       // alert('ran detail');
+        $('.quantity').html('');
+        $('.colors1').html('');
 
        
 
         $(function () {
-
+      
 
             $('.colors1').load('/Shoe/Colors/' + id, function (responseText, textStatus, XMLHttpRequest) {
                 if (textStatus == "success") {

@@ -7264,6 +7264,7 @@
     <Content Include="Views\Vendor\CreateOrder.cshtml" />
     <Content Include="Views\Vendor\Order.cshtml" />
     <Content Include="Views\Shoe\Colors.cshtml" />
+    <Content Include="Views\Shoe\Quantity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
