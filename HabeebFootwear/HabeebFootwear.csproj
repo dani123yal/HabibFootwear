@@ -163,6 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShoeController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,6 +183,10 @@
     <Compile Include="Migrations\201909051105051_Shoes_article_Unique.cs" />
     <Compile Include="Migrations\201909051105051_Shoes_article_Unique.Designer.cs">
       <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.cs" />
+    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.Designer.cs">
+      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Miscellaneous\HabibDataClass.cs" />
@@ -7274,6 +7279,9 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Vendor\Create.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Vendor\Edit.cshtml" />
+    <Content Include="Views\Shoe\shoes.cshtml" />
+    <Content Include="Views\Shoe\Details.cshtml" />
     <Content Include="Views\Vendor\CreateOrder.cshtml" />
     <Content Include="Views\Vendor\Order.cshtml" />
   </ItemGroup>
@@ -7341,6 +7349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909051105051_Shoes_article_Unique.resx">
       <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051224224_Vednor_Name_set_Required.resx">
+      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

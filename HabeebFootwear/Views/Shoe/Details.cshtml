@@ -1,0 +1,28 @@
+﻿
+
+<form class="form-group">
+    @{
+        if (HabeebFootwear.Controllers.ShoeController.shoe_Sizes != null)
+        {
+
+
+
+            foreach (HabeebFootwear.Models.Shoe_Size v in HabeebFootwear.Controllers.ShoeController.shoe_Sizes)
+            {
+                <label>
+
+                    <input type="checkbox" class="flat-red" name="ShoeSize" value="" />
+                    @v.Size.sizeNo
+                </label>
+            }
+        }
+        else
+        {
+            <h1>Null</h1>
+        }
+
+    }
+
+    
+</form>
+

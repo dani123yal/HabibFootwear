@@ -28,11 +28,14 @@
                             <th>Vendor Company</th>
                             <th>Vendor Contact No</th>
                             <th>Vendor Address</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
+                            if (item.DeleteStatus == 0)
+                            {
                         <tr>
 
                             <td>
@@ -52,10 +55,11 @@
                                 @Html.DisplayFor(modelItem => item.vendorAddress)
                             </td>
                             <td>
-                                <a href="Edit?id=@item.vendor_Id" class="btn btn-default btn-default"><span class="glyphicon glyphicon-edit"></span> </a>
-                                <a href="Delete?id=@item.vendor_Id" onclick="return confirm('Are You Sure to Delete Report?');" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-trash"></span> </a>
+                                <a href="/Vendor/Edit?id=@item.vendor_Id" class="btn btn-default btn-primary"><span style="color:white" class="glyphicon glyphicon-edit"> Edit</span> </a>
+                                <a href="/Vendor/Delete?id=@item.vendor_Id" onclick="return confirm('Are You Sure to Delete Vendor?');" class="btn btn-danger btn-default"><span style="color:white" class="glyphicon glyphicon-trash"> Delete</span> </a>
                             </td>
                         </tr>
+                            }
 
                         }
 
