@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using HabeebFootwear.Models;
 using HabeebFootwear.Miscellaneous;
+using HabeebFootwear.View_Modals;
 
 namespace HabeebFootwear.Controllers
 {
@@ -64,9 +65,27 @@ namespace HabeebFootwear.Controllers
             habib.SaveChanges();
             return RedirectToAction("Index", "Vendor");
         }
-        public ActionResult Order()
+        
+        public ActionResult CreateOrder()
         {
-            return View();
+            
+            VendorOrderViewModel vendor_order = new VendorOrderViewModel();
+            Shoe s = new Shoe();
+
+               
+
+            vendor_order.shoesList = (from a in habib.Shoes
+                                      select a).ToList();
+
+            vendor_order.colorsList = (from a in habib.Colors
+                                    select a).ToList();
+
+            vendor_order.sizesList = (from a in habib.Sizes
+                                       select a).ToList();
+
+            vendor_order.vendorsList = (from a in habib.Vendors
+                                       select a).ToList();
+            return View(vendor_order);
         }
     }
 }
