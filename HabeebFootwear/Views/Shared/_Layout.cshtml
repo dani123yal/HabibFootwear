@@ -339,42 +339,46 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
 
-
-                    <li class="@ViewBag.dashboardClass">
-                        <a href="~/Home/Index">
+                    <li class="@ViewBag.dashboard">
+                        <a href="#">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             <span class="pull-right-container">
-
                             </span>
                         </a>
                     </li>
-
-                    <li class="@ViewBag.attendenceClass">
+                    <li class="@ViewBag.POS">
                         <a href="#">
-                            <i class="fa fa-pencil-square-o"></i> <span>Attendance</span>
+                            <i class="fa fa-table"></i> <span>Point Of Sale</span>
+                            <span class="pull-right-container">
+                            </span>
+                        </a>
+                    </li>
+                    <li class="@ViewBag.Vendor treeview" style="height: auto;">
+                        <a href="#">
+                            <i class="fa fa-industry"></i> <span>Vendor</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li class="@ViewBag.markAttendenceClass"><a href="~/Attendance/MarkAttendance"><i class="fa fa-circle-o"></i> Mark Attendance</a></li>
-                            <li class="@ViewBag.viewAttendenceClass"><a href="~/Attendance/ViewAttendance"><i class="fa fa-circle-o"></i> View Attendance</a></li>
+                        <ul class="treeview-menu" style="display: none;">
+                            <li class="@ViewBag.vlist"><a href="/Vendor"><i class="fa fa-circle-o"></i> Vendor List</a></li>
+                            <li class="@ViewBag.vcreate"><a href="/Vendor/Create"><i class="fa fa-circle-o"></i> Create Vendor</a></li>
                         </ul>
                     </li>
 
-
-                    <li class="@ViewBag.studentResultsClass">
+                    <li class="@ViewBag.Employee treeview" style="height: auto;">
                         <a href="#">
-                            <i class="fa fa-pie-chart"></i> <span>Student Results</span>
+                            <i class="fa fa-user"></i> <span>Employee</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li class="@ViewBag.addResultClass"><a href="/studentresult/addresult"><i class="fa fa-circle-o"></i> Add Result</a></li>
-                            <li class="@ViewBag.viewResultClass"><a href="/studentresult/viewresult"><i class="fa fa-circle-o"></i> View Result </a></li>
+                        <ul class="treeview-menu" style="display: none;">
+                            <li class="@ViewBag.elist"><a href="/Employee"><i class="fa fa-circle-o"></i> Employee List</a></li>
+                            <li class="@ViewBag.ecreate"><a href="/Employee/Create"><i class="fa fa-circle-o"></i> Create Employee</a></li>
                         </ul>
                     </li>
+
 
 
 

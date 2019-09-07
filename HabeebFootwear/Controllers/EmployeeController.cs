@@ -16,11 +16,13 @@ namespace HabeebFootwear.Controllers
         public ActionResult Index()
         {
             var Employee_List = (from a in habib.Employees select a).ToList();
-
+            ViewBag.Employee = "active";
+            ViewBag.elist = "active";
             return View(Employee_List);
         }
         public ActionResult Create()
         {
+            ViewBag.Employee = "active";ViewBag.ecreate = "active";
             return View();
         }
         public ActionResult Edit(int id)
