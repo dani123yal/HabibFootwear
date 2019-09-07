@@ -160,32 +160,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909051043231_InitialCreate.cs" />
-    <Compile Include="Migrations\201909051043231_InitialCreate.Designer.cs">
-      <DependentUpon>201909051043231_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.cs" />
-    <Compile Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.Designer.cs">
-      <DependentUpon>201909051044406_Vendor_DeleteStatus_Field_added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.cs" />
-    <Compile Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.Designer.cs">
-      <DependentUpon>201909051047328_Vendor_DeleteStatus_Field_added_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051105051_Shoes_article_Unique.cs" />
-    <Compile Include="Migrations\201909051105051_Shoes_article_Unique.Designer.cs">
-      <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.cs" />
-    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.Designer.cs">
-      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Miscellaneous\HabibDataClass.cs" />
     <Compile Include="Models\Batch.cs" />
     <Compile Include="Models\Color.cs" />
@@ -7276,6 +7256,9 @@
     <Content Include="Views\Vendor\Create.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
     <Content Include="Views\Vendor\Edit.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -7329,23 +7312,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909051043231_InitialCreate.resx">
-      <DependentUpon>201909051043231_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.resx">
-      <DependentUpon>201909051044406_Vendor_DeleteStatus_Field_added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.resx">
-      <DependentUpon>201909051047328_Vendor_DeleteStatus_Field_added_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051105051_Shoes_article_Unique.resx">
-      <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051224224_Vednor_Name_set_Required.resx">
-      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
