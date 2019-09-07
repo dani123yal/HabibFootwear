@@ -17,7 +17,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="~/Theme/AdminLTE-2.4.13/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="~/Theme/AdminLTE-2.4.13/plugins/iCheck/all.css">
-    
     <!-- AdminLTE Skins. Choose a skin from the css/skins
 
          folder instead of downloading all of them to reduce the load. -->
@@ -634,6 +633,8 @@
     <script src="~/Theme/AdminLTE-2.4.13/plugins/iCheck/icheck.min.js"></script>
 
     <!-- THINKS TO ADD -->
+
+    <script src="~/Theme/AdminLTE-2.4.13/plugins/iCheck/icheck.min.js"></script>
     <!-- DataTables -->
     <script src="~/Theme/AdminLTE-2.4.13/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="~/Theme/AdminLTE-2.4.13/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -662,11 +663,13 @@
                 $(this).remove();
             });
         }, 4000);
-
-
     </script>
+
     <script>
         $(function () {
+
+
+            //iCheck for checkbox and radio inputs
             $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
                 checkboxClass: 'icheckbox_minimal-blue',
                 radioClass: 'iradio_minimal-blue'
@@ -682,9 +685,6 @@
                 radioClass: 'iradio_flat-green'
             })
         })
-
-
     </script>
-
 </body>
 </html>

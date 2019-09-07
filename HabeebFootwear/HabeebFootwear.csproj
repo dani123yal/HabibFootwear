@@ -54,6 +54,7 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.7\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
     </Reference>
@@ -89,6 +90,7 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -213,6 +215,7 @@
     <Compile Include="Models\webpages_OAuthMembership.cs" />
     <Compile Include="Models\webpages_Roles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View_Modals\VendorOrderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -7279,6 +7282,8 @@
     <Content Include="Views\Vendor\Edit.cshtml" />
     <Content Include="Views\Shoe\shoes.cshtml" />
     <Content Include="Views\Shoe\Details.cshtml" />
+    <Content Include="Views\Vendor\CreateOrder.cshtml" />
+    <Content Include="Views\Vendor\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -7312,7 +7317,6 @@
     <Folder Include="Theme\AdminLTE-2.4.13\bower_components\ckeditor\plugins\sourcedialog\icons\hidpi\" />
     <Folder Include="Theme\AdminLTE-2.4.13\bower_components\ckeditor\plugins\templates\icons\hidpi\" />
     <Folder Include="Theme\AdminLTE-2.4.13\bower_components\ckeditor\plugins\uicolor\icons\hidpi\" />
-    <Folder Include="View_Modals\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
