@@ -163,6 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OutletController.cs" />
     <Compile Include="Controllers\ShoeController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -7265,6 +7266,9 @@
     <Content Include="Views\Vendor\Order.cshtml" />
     <Content Include="Views\Shoe\Colors.cshtml" />
     <Content Include="Views\Shoe\Quantity.cshtml" />
+    <Content Include="Views\Outlet\Index.cshtml" />
+    <Content Include="Views\Outlet\Shoes.cshtml" />
+    <Content Include="Views\Outlet\Quantity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
