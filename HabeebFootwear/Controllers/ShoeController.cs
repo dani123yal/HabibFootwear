@@ -79,5 +79,27 @@ namespace HabeebFootwear.Controllers
             return habib.Shoe_Size_Color.Find(shoeSizeColorID);
         }
 
+        public ActionResult edit(int id)
+        {
+            Shoe shoe = Miscellaneous.HabibDataClass.Habib.Shoes.Where(c => c.shoe_Id == id).First();
+            return View(shoe);
+
+        }
+
+        [HttpPost]
+        public ActionResult edit(Shoe model)
+        {
+
+            Shoe s= Miscellaneous.HabibDataClass.Habib.Shoes.Single(c => c.shoe_Id == model.shoe_Id);
+            s.shoeArticle = model.shoeArticle;
+            s.shoePrice = model.shoePrice;
+            s.shoeVariety = model.shoeVariety;
+
+            Miscellaneous.HabibDataClass.Habib.SaveChanges();
+
+            return RedirectToAction("Shoes");
+
+        }
+
     }
 }

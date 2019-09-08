@@ -170,6 +170,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909081727004_dateAdded.cs" />
+    <Compile Include="Migrations\201909081727004_dateAdded.Designer.cs">
+      <DependentUpon>201909081727004_dateAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Miscellaneous\HabibDataClass.cs" />
     <Compile Include="Models\Batch.cs" />
     <Compile Include="Models\Color.cs" />
@@ -7273,6 +7278,8 @@
     <Content Include="Views\Outlet\Index.cshtml" />
     <Content Include="Views\Outlet\Shoes.cshtml" />
     <Content Include="Views\Outlet\Quantity.cshtml" />
+    <Content Include="Views\Shoe\edit.cshtml" />
+    <Content Include="Views\Shoe\edit2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -7325,6 +7332,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909081727004_dateAdded.resx">
+      <DependentUpon>201909081727004_dateAdded.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

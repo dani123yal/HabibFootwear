@@ -31,6 +31,9 @@ namespace HabeebFootwear.Models
 
         public string shoeVariety { get; set; }
 
+        [Column(TypeName = "Date")]
+        public DateTime UpdateDate { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Batch> Batches { get; set; }
 
