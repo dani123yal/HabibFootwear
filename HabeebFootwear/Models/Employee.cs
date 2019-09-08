@@ -30,6 +30,8 @@ namespace HabeebFootwear.Models
 
         public string typeOfEmployee { get; set; }
 
+        public byte DeleteStatus { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
     }

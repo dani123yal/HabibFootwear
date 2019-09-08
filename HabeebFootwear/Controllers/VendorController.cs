@@ -19,11 +19,12 @@ namespace HabeebFootwear.Controllers
         public ActionResult Index()
         {
             var Vendnor_List = (from a in habib.Vendors select a).ToList();
-
+            ViewBag.vlist = "active"; ViewBag.Vendor = "active";
             return View(Vendnor_List);
         }
         public ActionResult Create()
         {
+            ViewBag.vcreate = "active";ViewBag.Vendor = "active";
             return View();
         }
         public ActionResult Edit(int id)
