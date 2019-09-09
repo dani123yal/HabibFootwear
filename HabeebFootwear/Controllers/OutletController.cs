@@ -57,5 +57,23 @@ namespace HabeebFootwear.Controllers
             outlet = outlet.Where(c => c.outlet_Id == outletid).ToList();
             return PartialView(outlet);
         }
+
+
+        public ActionResult warehouse()
+        {
+
+            List<Shoe_Size_Color> s = Miscellaneous.HabibDataClass.Habib.Shoe_Size_Color.Where(c => c.quantityInWH != 0).ToList();
+
+            return View(s);
+        }
+
+        public ActionResult warehouseQuantity(string id)
+        {
+
+            List<Shoe_Size_Color> s = Miscellaneous.HabibDataClass.Habib.Shoe_Size_Color.Where(c => c.Shoe_Size.Shoe.shoeArticle.Equals(id)).ToList();
+
+            return View(s);
+        }
+
     }
 }

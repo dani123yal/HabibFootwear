@@ -13,6 +13,7 @@ namespace HabeebFootwear.Models
         public VendorOrder()
         {
             RemainingPayments = new HashSet<RemainingPayment>();
+            VendorOrder_ShoeSizeColor = new HashSet<VendorOrder_ShoeSizeColor>();
             VendorPayments = new HashSet<VendorPayment>();
         }
 
@@ -38,6 +39,9 @@ namespace HabeebFootwear.Models
         public virtual ICollection<RemainingPayment> RemainingPayments { get; set; }
 
         public virtual Vendor Vendor { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VendorOrder_ShoeSizeColor> VendorOrder_ShoeSizeColor { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VendorPayment> VendorPayments { get; set; }

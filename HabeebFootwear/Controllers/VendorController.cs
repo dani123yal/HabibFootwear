@@ -19,12 +19,15 @@ namespace HabeebFootwear.Controllers
         public ActionResult Index()
         {
             var Vendnor_List = (from a in habib.Vendors select a).ToList();
-            ViewBag.vlist = "active"; ViewBag.Vendor = "active";
+            ViewBag.Vendor = "active";
+            ViewBag.vlist = "active";
+            ViewBag.vlistDisplay = "block";
             return View(Vendnor_List);
         }
         public ActionResult Create()
         {
             ViewBag.vcreate = "active";ViewBag.Vendor = "active";
+            ViewBag.vlistDisplay = "block";
             return View();
         }
         public ActionResult Edit(int id)
@@ -87,5 +90,20 @@ namespace HabeebFootwear.Controllers
                                        select a).ToList();
             return View(vendor_order);
         }
+
+        public ActionResult VendorOrderList()
+        {
+            List<VendorOrder> vo = habib.VendorOrders.ToList();
+
+            return View(vo);
+        }
+
+        public ActionResult VendorOrderDetails(int id)
+        {
+            List<VendorOrder_ShoeSizeColor> vo = habib.VendorOrder_ShoeSizeColor.Where(c => c.vendorOrder_Id == id).ToList();
+
+            return View(vo);
+        }
+
     }
 }
