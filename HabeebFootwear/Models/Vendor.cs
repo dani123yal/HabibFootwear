@@ -13,27 +13,23 @@ namespace HabeebFootwear.Models
         public Vendor()
         {
             VendorOrders = new HashSet<VendorOrder>();
-            VendorOrder_ShoeSizeColor = new HashSet<VendorOrder_ShoeSizeColor>();
         }
 
         [Key]
         public int vendor_Id { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Vendor Name")]
+        [Required]
         public string vendorName { get; set; }
 
         public string vendorCompany { get; set; }
 
-        //[RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{7})$", ErrorMessage = "Invalid Contact number use this e.g: xxxx-xxxxxxx")]
         public string vendorContactNo { get; set; }
 
         public string vendorAddress { get; set; }
+
         public byte DeleteStatus { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VendorOrder> VendorOrders { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VendorOrder_ShoeSizeColor> VendorOrder_ShoeSizeColor { get; set; }
     }
 }

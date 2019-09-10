@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HabeebFootwear.Models.Shoe>
+﻿@model IEnumerable<HabeebFootwear.Models.Outlet_ShoeSizeColor>
 
 @{
     ViewBag.Title = "shoes";
@@ -15,7 +15,7 @@
                 <h4 class="modal-title">Default Modal</h4>
             </div>
             <div class="modal-body">
-               
+
 
 
                 @{
@@ -67,46 +67,56 @@
                         <tr>
 
                             <th>Shoe Article</th>
-                            <th>Latest Cost</th>
-                            <th>Shoe Price</th>
-                            <th>Shoe Variety</th>
-                            <th>Date of Last Order</th>
-                            <th>Action</th>
                             
+                            <th>Quantity</th>
+
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+
+
+                        @{string lastArticle = "";  int i = 0;
+
+                            var result = Model.GroupBy(c => c.Shoe_Size_Color.Shoe_Size.Shoe.shoeArticle).Select(g => new { article = g.Key, total = g.Sum(ii => ii.quantity) });
+
+                            }
+
+                        @foreach (var item in result)
                         {
+                            i++;
+
+                            /*if (lastArticle.Equals(item.shoeArticle))
+                            {
+                                continue;
+                            }*/
+
                         <tr>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.shoeArticle)
+                                @item.article
                             </td>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.shoeCost)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.shoePrice)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.shoeVariety)
-                            </td>
-                            <td>
+                               @item.total
+                                        
+                                        
+                                        
 
-                                @item.UpdateDate.ToShortDateString().ToString()
-                                
                             </td>
-                            <td>
-                                <button class="btn" onclick="aaa(@item.shoe_Id)">Details</button>
-                                <button class="btn" onclick="uuu(@item.shoe_Id)">edit</button>
-                            </td>
+
                            
+
+                            <td>
+                                <button class="btn" onclick="rrr('@item.article','@Model.First().outlet_Id')">Details</button>
+                            </td>
 
                         </tr>
 
+                           // lastArticle = item.shoeArticle;
+
                         }
+                        
 
                     </tbody>
                 </table>
@@ -122,18 +132,18 @@
 </div>
 
 <script type="text/javascript">
-    function GetDetails(id) {
+    function GetDetails(id,outletid) {
 
         $.ajax({
             type: "GET",
-            url: '/Shoe/Details/'+id+'',
+            url: '/Shoe/Details/?id=' + id + '&outletid=' + outletid,
             contentType: "application/json; charset=utf-8",
-            
+
             success: function () {
 
                 $('#modal-default').modal('toggle');
             },
-            
+
         });
         }
 
@@ -141,18 +151,18 @@
 
 <script type="text/javascript">
 
-    function aaa(id) {
+    function rrr(id,outletid) {
 
         $(function () {
             $('.quantity').html('');
-   
+
             $('.colors1').html('');
 
-            $('.target').load('/Shoe/Details/' + id, function (responseText, textStatus, XMLHttpRequest) {
+            $('.target').load('/outlet/quantity/?id=' + id + '&outletid=' + outletid, function (responseText, textStatus, XMLHttpRequest) {
                 if (textStatus == "success") {
                     // all good!
 
-                   
+
                     $('#modal-default').modal('toggle');
                     $('.flat-red').iCheck({ checkboxClass: 'icheckbox_flat-green', radioClass: 'iradio_flat-green' });
                 }
@@ -161,42 +171,12 @@
                 }
             });
 
-           
-            
 
 
-                
-            
-        });
-    }
 
 
-    function uuu(id) {
-
-        $(function () {
-            $('.quantity').html('');
-   
-            $('.colors1').html('');
-
-            $('.target').load('/Shoe/edit/' + id, function (responseText, textStatus, XMLHttpRequest) {
-                if (textStatus == "success") {
-                    // all good!
-
-                   
-                    $('#modal-default').modal('toggle');
-                   
-                }
-                if (textStatus == "error") {
-                    // oh noes!
-                }
-            });
-
-           
-            
 
 
-                
-            
         });
     }
 </script>

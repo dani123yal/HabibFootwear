@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -52,6 +52,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -153,40 +156,23 @@
     <Reference Include="Microsoft.AI.Web">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OutletController.cs" />
     <Compile Include="Controllers\ShoeController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909051043231_InitialCreate.cs" />
-    <Compile Include="Migrations\201909051043231_InitialCreate.Designer.cs">
-      <DependentUpon>201909051043231_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.cs" />
-    <Compile Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.Designer.cs">
-      <DependentUpon>201909051044406_Vendor_DeleteStatus_Field_added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.cs" />
-    <Compile Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.Designer.cs">
-      <DependentUpon>201909051047328_Vendor_DeleteStatus_Field_added_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051105051_Shoes_article_Unique.cs" />
-    <Compile Include="Migrations\201909051105051_Shoes_article_Unique.Designer.cs">
-      <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.cs" />
-    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.Designer.cs">
-      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
+    <Compile Include="Migrations\201909081727004_dateAdded.cs" />
+    <Compile Include="Migrations\201909081727004_dateAdded.Designer.cs">
+      <DependentUpon>201909081727004_dateAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Miscellaneous\HabibDataClass.cs" />
@@ -232,6 +218,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\HabeebFootwear20190909082730 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -6640,7 +6627,9 @@
     <Content Include="Theme\AdminLTE-2.4.13\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Theme\AdminLTE-2.4.13\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Theme\AdminLTE-2.4.13\starter.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -7284,6 +7273,20 @@
     <Content Include="Views\Shoe\Details.cshtml" />
     <Content Include="Views\Vendor\CreateOrder.cshtml" />
     <Content Include="Views\Vendor\Order.cshtml" />
+    <Content Include="Views\Shoe\Colors.cshtml" />
+    <Content Include="Views\Shoe\Quantity.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Outlet\Index.cshtml" />
+    <Content Include="Views\Outlet\Shoes.cshtml" />
+    <Content Include="Views\Outlet\Quantity.cshtml" />
+    <Content Include="Views\Shoe\edit.cshtml" />
+    <Content Include="Views\Shoe\edit2.cshtml" />
+    <Content Include="Views\Outlet\Warehouse.cshtml" />
+    <Content Include="Views\Outlet\warehouseQuantity.cshtml" />
+    <Content Include="Views\Vendor\VendorOrderList.cshtml" />
+    <Content Include="Views\Vendor\VendorOrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -7338,20 +7341,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909051043231_InitialCreate.resx">
-      <DependentUpon>201909051043231_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.resx">
-      <DependentUpon>201909051044406_Vendor_DeleteStatus_Field_added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.resx">
-      <DependentUpon>201909051047328_Vendor_DeleteStatus_Field_added_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051105051_Shoes_article_Unique.resx">
-      <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051224224_Vednor_Name_set_Required.resx">
-      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909081727004_dateAdded.resx">
+      <DependentUpon>201909081727004_dateAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

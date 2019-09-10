@@ -7,13 +7,13 @@ namespace HabeebFootwear.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Shoes_article_Unique : IMigrationMetadata
+    public sealed partial class dateAdded : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Shoes_article_Unique));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(dateAdded));
         
         string IMigrationMetadata.Id
         {
-            get { return "201909051105051_Shoes_article_Unique"; }
+            get { return "201909081727004_dateAdded"; }
         }
         
         string IMigrationMetadata.Source

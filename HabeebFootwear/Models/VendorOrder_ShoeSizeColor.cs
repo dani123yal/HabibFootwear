@@ -11,16 +11,16 @@ namespace HabeebFootwear.Models
         [Key]
         public int vendorOrderShoeSizeColor_Id { get; set; }
 
-        public int? vendor_Id { get; set; }
-
         public int? shoeSizeColor_Id { get; set; }
 
         public int? quantity { get; set; }
 
         public int? cost { get; set; }
 
+        public int? vendorOrder_Id { get; set; }
+
         public virtual Shoe_Size_Color Shoe_Size_Color { get; set; }
 
-        public virtual Vendor Vendor { get; set; }
+        public virtual VendorOrder VendorOrder { get; set; }
     }
 }
