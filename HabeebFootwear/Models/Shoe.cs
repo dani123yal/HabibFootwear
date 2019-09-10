@@ -20,9 +20,7 @@ namespace HabeebFootwear.Models
         public int shoe_Id { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        [Index(IsUnique = true)]
-       
+        [StringLength(20)]
         public string shoeArticle { get; set; }
 
         public int? shoeCost { get; set; }
@@ -30,6 +28,9 @@ namespace HabeebFootwear.Models
         public int? shoePrice { get; set; }
 
         public string shoeVariety { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime UpdateDate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Batch> Batches { get; set; }

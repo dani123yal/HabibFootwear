@@ -168,28 +168,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909051043231_InitialCreate.cs" />
-    <Compile Include="Migrations\201909051043231_InitialCreate.Designer.cs">
-      <DependentUpon>201909051043231_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.cs" />
-    <Compile Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.Designer.cs">
-      <DependentUpon>201909051044406_Vendor_DeleteStatus_Field_added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.cs" />
-    <Compile Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.Designer.cs">
-      <DependentUpon>201909051047328_Vendor_DeleteStatus_Field_added_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051105051_Shoes_article_Unique.cs" />
-    <Compile Include="Migrations\201909051105051_Shoes_article_Unique.Designer.cs">
-      <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.cs" />
-    <Compile Include="Migrations\201909051224224_Vednor_Name_set_Required.Designer.cs">
-      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Miscellaneous\HabibDataClass.cs" />
+    <Compile Include="Miscellaneous\vendorOrderDataHandler.cs" />
     <Compile Include="Models\Batch.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\CustomerOrder.cs" />
@@ -222,6 +202,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-editable-select-master\.gitignore" />
+    <Content Include="Content\jquery-editable-select-master\dist\jquery-editable-select.css" />
+    <Content Include="Content\jquery-editable-select-master\dist\jquery-editable-select.js" />
+    <Content Include="Content\jquery-editable-select-master\dist\jquery-editable-select.min.css" />
+    <Content Include="Content\jquery-editable-select-master\dist\jquery-editable-select.min.js" />
+    <Content Include="Content\jquery-editable-select-master\Gruntfile.js" />
+    <Content Include="Content\jquery-editable-select-master\src\jquery-editable-select.css" />
+    <Content Include="Content\jquery-editable-select-master\src\jquery-editable-select.js" />
+    <Content Include="Content\wizardForm.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -232,6 +221,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\jquery-editable-select-master\bower.json" />
+    <Content Include="Content\jquery-editable-select-master\LICENSE" />
+    <Content Include="Content\jquery-editable-select-master\package.json" />
+    <Content Include="Content\jquery-editable-select-master\README.md" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -243,6 +236,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Wizard-Form.js" />
     <Content Include="Theme\AdminLTE-2.4.13\bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Theme\AdminLTE-2.4.13\bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Theme\AdminLTE-2.4.13\bower_components\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -6640,7 +6634,9 @@
     <Content Include="Theme\AdminLTE-2.4.13\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Theme\AdminLTE-2.4.13\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Theme\AdminLTE-2.4.13\starter.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -7336,23 +7332,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909051043231_InitialCreate.resx">
-      <DependentUpon>201909051043231_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051044406_Vendor_DeleteStatus_Field_added.resx">
-      <DependentUpon>201909051044406_Vendor_DeleteStatus_Field_added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051047328_Vendor_DeleteStatus_Field_added_1.resx">
-      <DependentUpon>201909051047328_Vendor_DeleteStatus_Field_added_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051105051_Shoes_article_Unique.resx">
-      <DependentUpon>201909051105051_Shoes_article_Unique.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051224224_Vednor_Name_set_Required.resx">
-      <DependentUpon>201909051224224_Vednor_Name_set_Required.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
