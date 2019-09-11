@@ -1,0 +1,26 @@
+﻿
+@model List<HabeebFootwear.Models.Shoe>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOutlet.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+@{ 
+    int i = 0;
+}
+
+<div class="form-group">
+    <label>Shoes</label>
+    <select class="form-control select2" style="width: 100%;">
+        @foreach(HabeebFootwear.Models.Shoe shoe in Model)
+        {
+            <option >@shoe.shoeArticle</option>
+
+        }
+    </select>
+</div>
