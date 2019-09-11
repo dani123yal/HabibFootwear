@@ -68,14 +68,14 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="~/warehouse.svg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Head Office</span>
+                                <span class="hidden-xs">@WebSecurity.CurrentUserName.ToUpper()</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
                                     <img src="~/warehouse.svg" class="img-circle" alt="User Image">
                                     <p>
-                                        Head Office Account
+                                        @WebSecurity.CurrentUserName.ToUpper() Account
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -106,7 +106,7 @@
                         <img src="~/warehouse.svg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p style="padding-top:10px;">Head Office</p>
+                        <p style="padding-top:10px;">@WebSecurity.CurrentUserName.ToUpper()</p>
 
                     </div>
                 </div>
@@ -124,87 +124,39 @@
                         </a>
                     </li>
 
-                    <li class="treeview @ViewBag.Orders " style="height: auto;">
+                    <li class="@ViewBag.dashboard">
                         <a href="#">
-                            <i class="fa fa-industry"></i> <span>Vendor Orders</span>
+                            <i class="fa fa-dashboard"></i> <span>Point Of Sale</span>
                             <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        <ul class="treeview-menu" style="display: @ViewBag.orderDisplay;">
-                            <li class="@ViewBag.createOrder"><a href="#"><i class="fa fa-circle-o"></i> Create Order</a></li>
-                            <li class="@ViewBag.orderList"><a href="/Vendor/VendorOrderList"><i class="fa fa-circle-o"></i> Order List</a></li>
-                            <li class="@ViewBag.payments"><a href="#"><i class="fa fa-circle-o"></i> Payments</a></li>
-
-                        </ul>
                     </li>
 
-                    <li class="treeview @ViewBag.transfer " style="height: auto;">
+                    <li class="@ViewBag.dashboard">
                         <a href="#">
-                            <i class="fa fa-industry"></i> <span>Transfers</span>
+                            <i class="fa fa-dashboard"></i> <span>Order History</span>
                             <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        <ul class="treeview-menu" style="display: @ViewBag.orderDisplay;">
-                            <li class="@ViewBag.createTransfer"><a href="#"><i class="fa fa-circle-o"></i> Create Transfer</a></li>
-                            <li class="@ViewBag.viewTransfers"><a href="#"><i class="fa fa-circle-o"></i> View Transfers</a></li>
-
-                        </ul>
                     </li>
 
-
-
-                    <li class="treeview @ViewBag.Vendor " style="height: auto;">
+                    <li class="@ViewBag.dashboard">
                         <a href="#">
-                            <i class="fa fa-industry"></i> <span>Vendor</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu" style="display: @ViewBag.vlistDisplay;">
-                            <li class="@ViewBag.vlist"><a href="/Vendor"><i class="fa fa-circle-o"></i> Vendor List</a></li>
-                            <li class="@ViewBag.vcreate"><a href="/Vendor/Create"><i class="fa fa-circle-o"></i> Create Vendor</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li class="@ViewBag.Employee treeview" style="height: auto;">
-                        <a href="#">
-                            <i class="fa fa-user"></i> <span>Employee</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu" style="display: @ViewBag.elistDisplay;">
-                            <li class="@ViewBag.elist"><a href="/Employee"><i class="fa fa-circle-o"></i> Employee List</a></li>
-                            <li class="@ViewBag.ecreate"><a href="/Employee/Create"><i class="fa fa-circle-o"></i> Create Employee</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="@ViewBag.shoe">
-                        <a href="/shoe/shoes">
-                            <i class="glyphicon glyphicon-gift"></i> <span>Shoe</span>
+                            <i class="fa fa-dashboard"></i> <span>Custom Orders</span>
                             <span class="pull-right-container">
                             </span>
                         </a>
                     </li>
 
-                    <li class="@ViewBag.outlet">
-                        <a href="/Outlet/index">
-                            <i class="glyphicon glyphicon-gift"></i> <span>Stock</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
 
-                    <li class="@ViewBag.reports">
-                        <a href="/Outlet/index">
-                            <i class="glyphicon glyphicon-gift"></i> <span>Reports</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
+
+
+
+                    
+
+                    
+
+                    
 
 
 

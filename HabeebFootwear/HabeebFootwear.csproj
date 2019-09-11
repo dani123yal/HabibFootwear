@@ -7287,6 +7287,8 @@
     <Content Include="Views\Outlet\warehouseQuantity.cshtml" />
     <Content Include="Views\Vendor\VendorOrderList.cshtml" />
     <Content Include="Views\Vendor\VendorOrderDetails.cshtml" />
+    <Content Include="Views\Shared\_LayoutOutlet.cshtml" />
+    <Content Include="Views\Home\Outlet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

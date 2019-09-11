@@ -46,7 +46,7 @@
             @using (Html.BeginForm("Login", "Account", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-                @ViewBag.error
+                @TempData["error"]
                 <div class="form-group has-feedback">
                     <input style="background-color:transparent;height:35px;width:100%;color:white;border:2px solid white;border-radius:10px 10px;color:white;text-align:center;font-size:18px;margin-top:10px;margin-bottom:10px;" type="text" name="UserName" placeholder="Email">
                 </div>

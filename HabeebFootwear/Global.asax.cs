@@ -21,6 +21,8 @@ namespace HabeebFootwear
             InitializeAuthenticationProcess();
             //WebSecurity.CreateUserAndAccount("outlet_1","12345");
             //Roles.AddUserToRole("outlet_1", "outlet");
+            //WebSecurity.CreateUserAndAccount("headoffice", "12345");
+            //Roles.AddUserToRole("headoffice", "headOffice");
         }
 
         private void InitializeAuthenticationProcess()
