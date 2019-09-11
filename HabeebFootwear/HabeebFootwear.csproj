@@ -170,12 +170,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909081727004_dateAdded.cs" />
-    <Compile Include="Migrations\201909081727004_dateAdded.Designer.cs">
-      <DependentUpon>201909081727004_dateAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Miscellaneous\HabibDataClass.cs" />
+    <Compile Include="Miscellaneous\vendorOrderDataHandler.cs" />
     <Compile Include="Models\Batch.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\CustomerOrder.cs" />
@@ -208,6 +204,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-editable-select-master\.gitignore" />
+    <Content Include="Content\jquery-editable-select-master\dist\jquery-editable-select.css" />
+    <Content Include="Content\jquery-editable-select-master\dist\jquery-editable-select.js" />
+    <Content Include="Content\jquery-editable-select-master\dist\jquery-editable-select.min.css" />
+    <Content Include="Content\jquery-editable-select-master\dist\jquery-editable-select.min.js" />
+    <Content Include="Content\jquery-editable-select-master\Gruntfile.js" />
+    <Content Include="Content\jquery-editable-select-master\src\jquery-editable-select.css" />
+    <Content Include="Content\jquery-editable-select-master\src\jquery-editable-select.js" />
+    <Content Include="Content\wizardForm.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -220,6 +225,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\HabeebFootwear20190909082730 - Web Deploy.pubxml" />
+    <Content Include="Content\jquery-editable-select-master\bower.json" />
+    <Content Include="Content\jquery-editable-select-master\LICENSE" />
+    <Content Include="Content\jquery-editable-select-master\package.json" />
+    <Content Include="Content\jquery-editable-select-master\README.md" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -231,6 +240,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Wizard-Form.js" />
     <Content Include="Theme\AdminLTE-2.4.13\bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Theme\AdminLTE-2.4.13\bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Theme\AdminLTE-2.4.13\bower_components\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -7340,11 +7350,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909081727004_dateAdded.resx">
-      <DependentUpon>201909081727004_dateAdded.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

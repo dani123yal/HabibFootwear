@@ -13,7 +13,11 @@ namespace HabeebFootwear.View_Modals
 
         public VendorOrder vendorOrder { get; set; }
 
-        public string selectedVendor { get; set; }
+        public List<Shoe> shoes { get; set; }
+
+        public List<Size> sizes { get; set; }
+
+        public List<Color> colors { get; set; }
 
         public List<Shoe> shoesList { get; set; }
 
@@ -22,5 +26,15 @@ namespace HabeebFootwear.View_Modals
         public List<Size> sizesList { get; set; }
 
         public List<Vendor> vendorsList { get; set; }
+
+        public List<string> shoesToAdd { get; set; }
+
+        public List<string> shoesCost { get; set; }
+
+        public List<string> sizesToAdd { get; set; }
+
+        public List<string> varieties { get; set; }
+
+        public List<string> qty { get; set; }
     }
 }
