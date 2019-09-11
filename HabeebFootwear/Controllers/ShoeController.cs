@@ -28,12 +28,7 @@ namespace HabeebFootwear.Controllers
            
         }
 
-        [HttpGet]
-        public async Task<ActionResult> GetColorDetails(int id)
-        {
-
-        }
-
+        
         [HttpGet]
         public async Task<ActionResult> Details(int id)
         {
