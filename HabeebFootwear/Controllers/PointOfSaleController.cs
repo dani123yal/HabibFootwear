@@ -11,7 +11,10 @@ namespace HabeebFootwear.Controllers
         // GET: PointOfSale
         public ActionResult Index()
         {
-            return View();
+
+            
+            
+            return View(Miscellaneous.HabibDataClass.Habib.Shoes.ToList());
         }
     }
 }
