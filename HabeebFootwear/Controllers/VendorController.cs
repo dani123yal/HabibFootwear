@@ -124,6 +124,7 @@ namespace HabeebFootwear.Controllers
                     totalQty = handler.getTotalQuantity(model.qty)
                 };
                 habib.VendorOrders.Add(order);
+                habib.SaveChanges();
 
                 handler.addVendorOrderListDetails(order.vendorOrder_Id,model.shoes,model.sizes,model.colors,model.qty);
 

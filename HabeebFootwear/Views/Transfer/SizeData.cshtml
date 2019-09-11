@@ -1,0 +1,9 @@
+﻿@model IEnumerable<HabeebFootwear.Models.Shoe_Size>
+
+    @foreach (var item in Model)
+    {
+<option value="@item.Size.sizeNo">@item.Size.sizeNo</option>
+    }
+
+
+@{HabeebFootwear.Controllers.TransferController.a++;}

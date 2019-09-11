@@ -1,0 +1,6 @@
+﻿@model IEnumerable<HabeebFootwear.Models.Shoe_Size_Color>
+@foreach(var item in Model)
+{
+<option value="@item.Color.colorName">@item.Color.colorName</option>
+}
+
