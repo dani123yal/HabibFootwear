@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HabeebFootwear.Models.Transfer_ShoeSizeColor>
+
+@{int i = 1;}
+<table class="table">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Article
+        </th>
+        <th>
+            Size
+        </th>
+        <th>
+            Color
+        </th>
+        <th>
+            Quantity in outlet
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @i
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shoe_Size_Color.Shoe_Size.Shoe.shoeArticle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shoe_Size_Color.Shoe_Size.Size.sizeNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shoe_Size_Color.Color.colorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+    </tr>
+    i++;
+}
+
+</table>

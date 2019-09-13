@@ -1,0 +1,96 @@
+﻿@model IEnumerable<HabeebFootwear.Models.TransferRecord>
+
+@{
+    ViewBag.Title = "ViewTransfer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Transfer Shoes Details</h4>
+            </div>
+            <div class="modal-body">
+                @{
+                    <div class="target">
+
+                    </div>
+
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="box box-success">
+    <div class="box-header">
+        <h2>Transfer Details</h2>
+    </div>
+    <div class="box-body">
+        <table class="table table-responsive" id="example1">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Outlet.outletName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dateOfTransfer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.shoesTransfered)
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Outlet.outletName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dateOfTransfer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.shoesTransfered)
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-info" value="Details" onclick="getDetails(@item.transfer_Id)" /> |
+                            @Html.ActionLink("Details", "Details", new { id = item.transfer_Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.transfer_Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>            
+        </table>
+    </div>
+</div>
+
+<script>
+    function getDetails(id) {
+        $.ajax({
+            type: "GET",
+            url: '/Transfer/GetTransferDetails/' + id,
+            contentType: "application/json; charset=utf-8",
+
+            success: function (data) {
+                $('.target').html(data);
+                $('#modal-default').modal('toggle');
+            },
+
+        });
+    }
+
+</script>
+

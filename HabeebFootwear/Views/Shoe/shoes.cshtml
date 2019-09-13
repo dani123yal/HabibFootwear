@@ -36,7 +36,6 @@
                 }
 
 
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -129,9 +128,10 @@
             url: '/Shoe/Details/'+id+'',
             contentType: "application/json; charset=utf-8",
             
-            success: function () {
+            success: function (data) {
 
                 $('#modal-default').modal('toggle');
+                
             },
             
         });

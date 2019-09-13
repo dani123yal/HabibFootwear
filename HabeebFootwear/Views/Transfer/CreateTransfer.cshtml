@@ -1,0 +1,215 @@
+﻿@model HabeebFootwear.View_Modals.ShoesTransferViewModel
+
+@{
+                /**/
+
+                ViewBag.Title = "CreateTransfer";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3>Transfer Details</h3>
+        </div>
+        <div class="box-body">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.transferRecord.outlet_Id, "Outlet Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.transferRecord.outlet_Id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.transferRecord.outlet_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.transferRecord.dateOfTransfer, "Date Of Transfer", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.transferRecord.dateOfTransfer, new { htmlAttributes = new { @class = "form-control", @type = "date", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.transferRecord.dateOfTransfer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3>Transfer Record Details</h3>
+        </div>
+        <div class="box-body">
+            <div class="form-horizontal">
+                <section>
+                    <div class="wizard">
+                        <div class="wizard-inner">
+                            <div class="connecting-line"></div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                        <span class="round-tab">
+                                            <i class="glyphicon glyphicon-folder-open"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li role="presentation" class="disabled">
+                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                        <span class="round-tab">
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li role="presentation" class="disabled">
+                                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                                        <span class="round-tab">
+                                            <i class="glyphicon glyphicon-picture"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li role="presentation" class="disabled">
+                                    <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                        <span class="round-tab">
+                                            <i class="glyphicon glyphicon-ok"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <form role="form">
+                            <div class="tab-content">
+                                <div class="tab-pane active" role="tabpanel" id="step1">
+                                    <h2 class="text-center">Shoe Article Selection</h2>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">No. of shoes</label>
+                                        <div class="col-md-8">
+                                            <input type="number" id="shoesNo" placeholder="Select No of shoes" class="form-control" required />
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="button" name="name" value="Add" onclick="checkShoesNo()" class="btn btn-primary btn-block" />
+                                        </div>
+                                    </div>
+                                    <table class="table table-striped" id="articleTbl">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Shoe Article</th>
+                                                <th>No Of Sizes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="shoe_form"></tbody>
+
+                                    </table>
+
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="step2">
+                                    <h2 class="text-center">Size Details</h2>
+
+                                    <table class="table table-striped" id="sizeTbl">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Shoe Article</th>
+                                                <th>Size #</th>
+                                                <th>No Of Colors</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="size_form"></tbody>
+
+                                    </table>
+
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                        <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="step3">
+                                    <h2 class="text-center">Color and Quantity</h2>
+
+                                    <table class="table table-striped" id="colorTbl">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Shoe Article</th>
+                                                <th>Size #</th>
+                                                <th>Color</th>
+                                                <th>Quantity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="color_form"></tbody>
+
+                                    </table>
+
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                        <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="complete">
+                                    <h2 class="text-center">Complete Info</h2>
+                                    <div class="form-group">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            <h3 class="result_form text-center"></h3>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <div class="text-center col-md-12">
+                                            <input type="submit" id="finishBtn" value="Finish Order" class="btn btn-block btn-primary" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div></div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <datalist id="shoes">
+            @foreach (var item in Model.shoes)
+            {
+            <option value="@item.shoeArticle">@item.shoeArticle</option>
+            }
+        </datalist>
+
+    </div>
+
+    <script src="~/Scripts/TransferWizardForm.js"></script>
+}
+
+
+    <script type="text/javascript">
+
+        function bbb(id) {
+            
+            
+            
+
+
+
+            $(function () {
+                var content;
+                $.get('/Transfer/SizeData/'+id, function (data) {
+                    content = data;
+                   // alert(content)
+                    $('.sizes').html(content);
+                });
+
+
+
+
+            });
+        }
+    </script>
