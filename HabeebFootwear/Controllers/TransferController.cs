@@ -12,7 +12,7 @@ namespace HabeebFootwear.Controllers
 {
     public class TransferController : Controller
     {
-        Habib habib = HabibDataClass.Habib;
+        Habib habib = new Habib();
         public static int a = 0;
 
         // GET: Transfer

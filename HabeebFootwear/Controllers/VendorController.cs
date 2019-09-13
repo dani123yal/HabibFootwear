@@ -14,7 +14,7 @@ namespace HabeebFootwear.Controllers
        // Habib habib = new Habib();
 
         //use this code for every....
-         Habib habib =  HabibDataClass.Habib;
+         Habib habib =  new Habib();
         // GET: Vendor
         public ActionResult Index()
         {
@@ -121,7 +121,9 @@ namespace HabeebFootwear.Controllers
                     paymentStatus = "Paid",
                     totalAmount = totalAmount,
                     amountRemaining = 0,
-                    totalQty = handler.getTotalQuantity(model.qty)
+                    totalQty = handler.getTotalQuantity(model.qty),
+                    paymentType = "Full"
+
                 };
                 habib.VendorOrders.Add(order);
                 habib.SaveChanges();
@@ -129,6 +131,26 @@ namespace HabeebFootwear.Controllers
                 handler.addVendorOrderListDetails(order.vendorOrder_Id,model.shoes,model.sizes,model.colors,model.qty);
 
                 handler.addPayment(order.vendorOrder_Id, totalAmount, Convert.ToDateTime(date));
+            }
+            else if(payMode == "2")
+            {
+                VendorOrder order = new VendorOrder()
+                {
+                    vendor_Id = vendorId,
+                    dateOfOrder = Convert.ToDateTime(date),
+                    paymentMode = paymentMethod,
+                    paymentStatus = "Partial Paid",
+                    totalAmount = totalAmount,
+                    amountRemaining = 0,
+                    totalQty = handler.getTotalQuantity(model.qty),
+                    paymentType = "Partial"
+                };
+                habib.VendorOrders.Add(order);
+                habib.SaveChanges();
+
+                handler.addVendorOrderListDetails(order.vendorOrder_Id, model.shoes, model.sizes, model.colors, model.qty);
+
+                handler.addPartialPayments(order.vendorOrder_Id, model.remainings);
             }
 
             return RedirectToAction("CreateOrder","Vendor");

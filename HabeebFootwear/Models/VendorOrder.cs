@@ -12,6 +12,7 @@ namespace HabeebFootwear.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public VendorOrder()
         {
+            Batches = new HashSet<Batch>();
             RemainingPayments = new HashSet<RemainingPayment>();
             VendorOrder_ShoeSizeColor = new HashSet<VendorOrder_ShoeSizeColor>();
             VendorPayments = new HashSet<VendorPayment>();
@@ -34,6 +35,18 @@ namespace HabeebFootwear.Models
         public string paymentStatus { get; set; }
 
         public string paymentMode { get; set; }
+
+        public string deleteStatus { get; set; }
+
+        public string deleteRemarks { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? deleteDate { get; set; }
+
+        public string paymentType { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Batch> Batches { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RemainingPayment> RemainingPayments { get; set; }

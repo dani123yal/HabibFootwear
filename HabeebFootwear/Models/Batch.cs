@@ -25,9 +25,13 @@ namespace HabeebFootwear.Models
         [Column(TypeName = "date")]
         public DateTime? batchDate { get; set; }
 
+        public int? vendorOrder_Id { get; set; }
+
         public virtual Shoe Shoe { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShoeSizeColor_CustomerOrder> ShoeSizeColor_CustomerOrder { get; set; }
+
+        public virtual VendorOrder VendorOrder { get; set; }
     }
 }

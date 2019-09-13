@@ -52,21 +52,21 @@
                                 <li role="presentation" class="active">
                                     <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                                         <span class="round-tab">
-                                            <i class="glyphicon glyphicon-folder-open"></i>
+                                            <i class="glyphicon glyphicon-pencil"></i>
                                         </span>
                                     </a>
                                 </li>
                                 <li role="presentation" class="disabled">
                                     <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
                                         <span class="round-tab">
-                                            <i class="glyphicon glyphicon-pencil"></i>
+                                            <i class="glyphicon glyphicon-th"></i>
                                         </span>
                                     </a>
                                 </li>
                                 <li role="presentation" class="disabled">
                                     <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
                                         <span class="round-tab">
-                                            <i class="glyphicon glyphicon-picture"></i>
+                                            <i class="glyphicon glyphicon-tint"></i>
                                         </span>
                                     </a>
                                 </li>
@@ -83,11 +83,11 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" role="tabpanel" id="step1">
                                     <h2 class="text-center">Shoe Article Selection</h2>
+                                    <label id="error1" class="text-center col-md-12" style="color:red;"></label>
                                     <div class="form-group">
                                         <label class="control-label col-md-2">No. of shoes</label>
                                         <div class="col-md-8">
                                             <input type="number" id="shoesNo" placeholder="Select No of shoes" class="form-control" required />
-
                                         </div>
                                         <div class="col-md-2">
                                             <input type="button" name="name" value="Add" onclick="checkShoesNo()" class="btn btn-primary btn-block" />
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="step2">
                                     <h2 class="text-center">Size Details</h2>
-
+                                    <label id="error2" class="text-center col-md-12" style="color:red;"></label>
                                     <table class="table table-striped" id="sizeTbl">
                                         <thead>
                                             <tr>
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="step3">
                                     <h2 class="text-center">Color and Quantity</h2>
-
+                                    <label id="error3" class="text-center col-md-12" style="color:red;"></label>
                                     <table class="table table-striped" id="colorTbl">
                                         <thead>
                                             <tr>
