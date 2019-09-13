@@ -38,7 +38,7 @@ namespace HabeebFootwear.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "failed";
+                    ViewBag.error = "Wrong username or password";
                 }
             
            
@@ -57,6 +57,8 @@ namespace HabeebFootwear.Controllers
                 return RedirectToAction("Outlet", "Home");
             }
 
+
+            
 
             return View();
         }
