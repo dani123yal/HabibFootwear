@@ -29,25 +29,45 @@ namespace HabeebFootwear.Controllers
             string uName = form["UserName"];
             string pass = form["Password"];
 
-            try
-            {
+           
                 if(WebSecurity.Login(uName, pass))
                 {
-                    ViewBag.error = Roles.GetRolesForUser(WebSecurity.CurrentUserName);
-                    return View();
+
+                return RedirectToAction("Authentication", "Account");
+                    
                 }
                 else
                 {
-                    ViewBag.error = "failed";
+                    ViewBag.error = "Wrong username or password";
                 }
-            }
-            catch 
-            {
-                
-                return View();
-            }
+            
+           
 
             return View();
+        }
+
+        public ActionResult Authentication()
+        {
+
+            if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+            {
+                return RedirectToAction("Index", "Home");
+            }else if(Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Contains("outlet"))
+            {
+                return RedirectToAction("Outlet", "Home");
+            }
+
+
+            
+
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            WebSecurity.Logout();
+
+            return View("Login");
         }
     }
 }

@@ -1,46 +1,46 @@
-﻿@model HabeebFootwear.View_Modals.VendorOrderViewModel
+﻿@model HabeebFootwear.View_Modals.ShoesTransferViewModel
 
 @{
-    ViewBag.Title = "CreateOrder";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "CreateTransfer";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("CreateOrder", "Vendor", FormMethod.Post))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="box box-success">
         <div class="box-header with-border">
-            <h4>Vendor Order Details</h4>
+            <h3>Transfer Details</h3>
         </div>
         <div class="box-body">
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    <Label class="control-label col-md-2">Order Date</Label>
+                    @Html.LabelFor(model => model.transferRecord.outlet_Id, "Outlet Id", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="date" name="dateOfOrder" value="@DateTime.Now" class="form-control" required />
+                        @Html.EditorFor(model => model.transferRecord.outlet_Id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.transferRecord.outlet_Id, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">Select Vendor</label>
+                    @Html.LabelFor(model => model.transferRecord.dateOfTransfer, "Date Of Transfer", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-
-                        <select class="form-control" name="venID">
-                            @foreach (var item in Model.vendorsList)
-                            {
-                                <option value="@item.vendor_Id">@item.vendorName</option>
-                            }
-                        </select>
+                        @Html.EditorFor(model => model.transferRecord.dateOfTransfer, new { htmlAttributes = new { @class = "form-control", @type = "date", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.transferRecord.dateOfTransfer, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
-    <div class="box box-succes">
+
+    <div class="box box-success">
         <div class="box-header with-border">
-            <h3>Shoes Details</h3>
+            <h3>Transfer Record Details</h3>
         </div>
         <div class="box-body">
             <div class="form-horizontal">
@@ -98,11 +98,7 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Shoe Article</th>
-                                                <th>Shoe Cost</th>
-                                                <th>Variety</th>
                                                 <th>No Of Sizes</th>
-
-
                                             </tr>
                                         </thead>
                                         <tbody class="shoe_form"></tbody>
@@ -157,67 +153,16 @@
                                     </ul>
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="complete">
-                                    <h2 class="text-center">Payment Step</h2>
-                                    <div class="box-header">
-                                        <div class="form-group has-success">
-                                            <div class="input-group input-group-lg col">
-                                                <span class="input-group-addon">Amount</span>
-                                                <input type="number" min="1" class="form-control" name="total" value="" placeholder="Enter payment amount here" required />
-                                            </div>
+                                    <h2 class="text-center">Complete Info</h2>
+                                    <div class="form-group">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            <h3 class="result_form text-center"></h3>
                                         </div>
-                                        <hr />
-                                        <h3 class="col-md-offset-0">Select payment way</h3>
-                                        <br />
-                                        <div class="form-group">
-                                            <div class="col-md-6 text-center">
-                                                <label>
-                                                    <input type="radio" class="flat-red" name="mode" value="1" required />
-                                                    Full payment now
-                                                </label>
-
-                                            </div>
-                                            <div class="col-md-6 text-center">
-                                                <label>
-                                                    <input type="radio" class="flat-red" name="mode" value="2" />
-                                                    Parial payment
-                                                </label>
-                                            </div>
-                                        </div>
+                                        <div class="col-md-2"></div>
+                                        
                                     </div>
-                                    <div class="box-body">
-                                        <div class="pay-now">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">Payment method</span>
-                                                    <select id="dropdown" name="payment_method" class="form-control col-md-10 hello">
-                                                        <option value="cash">Cash</option>
-                                                        <option value="card">Card</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pay-partial">
-                                            <div class="form-group">
-                                                <label class="control-label col-md-2">No. of partial payments</label>
-                                                <div class="col-md-8">
-                                                    <input type="number" id="paymentNo" placeholder="Select No of payments" class="form-control" />
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <input type="button" name="name" value="Add" onclick="checkPaymentNo()" class="btn btn-primary btn-block" />
-                                                </div>
-                                            </div>
-                                            <table class="table table-striped" id="payments">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Payment Date</th>
-                                                        <th>Payment Amount</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="payment_form"></tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <div class="text-center col-md-12">
                                             <input type="submit" id="finishBtn" value="Finish Order" class="btn btn-block btn-primary" disabled />
@@ -233,26 +178,38 @@
             </div>
         </div>
         <datalist id="shoes">
-            @foreach (var item in Model.shoesList)
+            @foreach (var item in Model.shoes)
             {
-                <option value="@item.shoeArticle"></option>
+            <option value="@item.shoeArticle">@item.shoeArticle</option>
             }
         </datalist>
 
-        <datalist id="sizes">
-            @foreach (var item in Model.sizesList)
-            {
-                <option value="@item.sizeNo"></option>
-            }
-        </datalist>
-
-        <datalist id="colors">
-            @foreach (var item in Model.colorsList)
-            {
-                <option value="@item.colorName"></option>
-            }
-        </datalist>
     </div>
 
-    <script src="~/Scripts/Wizard-Form.js"></script>
+    <script src="~/Scripts/TransferWizardForm.js"></script>
 }
+
+
+    <script type="text/javascript">
+
+        function bbb(id) {
+            
+            
+            
+
+
+
+            $(function () {
+                var content;
+                $.get('/Transfer/SizeData/'+id, function (data) {
+                    content = data;
+                   // alert(content)
+                    $('.sizes').html(content);
+                });
+
+
+
+
+            });
+        }
+    </script>

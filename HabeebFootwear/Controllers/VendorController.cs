@@ -69,13 +69,11 @@ namespace HabeebFootwear.Controllers
             return RedirectToAction("Index", "Vendor");
         }
         
+        [HttpGet]
         public ActionResult CreateOrder()
         {
             
             VendorOrderViewModel vendor_order = new VendorOrderViewModel();
-            Shoe s = new Shoe();
-
-               
 
             vendor_order.shoesList = (from a in habib.Shoes
                                       select a).ToList();
@@ -89,6 +87,51 @@ namespace HabeebFootwear.Controllers
             vendor_order.vendorsList = (from a in habib.Vendors
                                        select a).ToList();
             return View(vendor_order);
+        }
+
+        [HttpPost]
+        public ActionResult CreateOrder(VendorOrderViewModel model,FormCollection form)
+        {
+            vendorOrderDataHandler handler = new vendorOrderDataHandler();
+            string date = form["dateOfOrder"];
+
+            int vendorId = Convert.ToInt32(form["venID"]);
+
+            int totalAmount = Convert.ToInt32(form["total"]);
+
+            string payMode = form["mode"];
+
+            string paymentMethod = form["payment_method"];
+
+            handler.addNewShoes(model.shoesToAdd,model.shoesCost,model.varieties,Convert.ToDateTime(date));
+            handler.addNewSizes(model.sizesToAdd);
+            handler.addNewColors(model.colors);
+            handler.addShoeSize(model.shoes,model.sizes);
+            handler.addShoeSizeColor(model.shoes, model.sizes, model.colors,model.qty);
+            
+
+            if(payMode == "1")
+            {
+
+                VendorOrder order = new VendorOrder()
+                {
+                    vendor_Id = vendorId,
+                    dateOfOrder = Convert.ToDateTime(date),
+                    paymentMode = paymentMethod,
+                    paymentStatus = "Paid",
+                    totalAmount = totalAmount,
+                    amountRemaining = 0,
+                    totalQty = handler.getTotalQuantity(model.qty)
+                };
+                habib.VendorOrders.Add(order);
+                habib.SaveChanges();
+
+                handler.addVendorOrderListDetails(order.vendorOrder_Id,model.shoes,model.sizes,model.colors,model.qty);
+
+                handler.addPayment(order.vendorOrder_Id, totalAmount, Convert.ToDateTime(date));
+            }
+
+            return RedirectToAction("CreateOrder","Vendor");
         }
 
         public ActionResult VendorOrderList()

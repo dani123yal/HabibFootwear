@@ -1,0 +1,88 @@
+﻿
+@model List<HabeebFootwear.Models.Shoe>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOutlet.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+@{ 
+    int i = 500;
+}
+
+<div class="form-group">
+    <label>Shoes</label>
+    <select id="shoess" class="form-control select2" style="width: 100%;">
+        @foreach (HabeebFootwear.Models.Shoe shoe in Model)
+        {
+            <option>@shoe.shoeArticle</option>
+
+        }
+    </select>
+    <script>
+        $('#shoess').on('select2:select', function (e) {
+            //alert($('#shoess').select2('data')[0].text);
+            qwe($('#shoess').select2('data')[0].text);
+        });
+    </script>
+
+    <label>Size</label>
+    <select class="form-control select2" id="sizes" style="width: 100%;" "></select>
+
+
+    <script>
+        $('#sizes').on('select2:select', function (e) {
+            //alert($('#sizes').select2('data')[0].text);
+           // alert('running');
+            twe($('#shoess').select2('data')[0].text,$('#sizes').select2('data')[0].text);
+        });
+    </script>
+
+    <select class="form-control select2" id="colors" style="width: 100%;" "></select>
+    <input type="text" id="batch" style="width: 100%;">
+
+
+</div>
+
+<script>
+
+    function qwe(id) {
+        //alert(id);
+        $.ajax(
+            {
+                url: "/pointofsale/getSizes/"+id,
+                type: "get"
+
+
+                , success: function (data) {
+                    //alert(data);
+                    $("#sizes").html(data);
+                }
+            });
+    }
+</script>
+
+<script>
+
+    function twe(id, colorid) {
+        alert("/pointofsale/getColors/?id=" + id + "&sizeno=" + colorid);
+        $.ajax(
+            {
+                url: "/pointofsale/getColors/?id=" + id + "&sizeno=" + colorid,
+
+                
+                type: "get"
+
+
+                , success: function (data) {
+                    alert(data);
+                    $("#colors").html(data);
+                }
+            });
+    }
+</script>
+

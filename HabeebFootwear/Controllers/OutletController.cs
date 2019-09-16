@@ -11,6 +11,7 @@ namespace HabeebFootwear.Controllers
 {
     public class OutletController : Controller
     {
+        Models.Habib h = new Habib();
 
         
         // GET: Outlet
@@ -35,10 +36,10 @@ namespace HabeebFootwear.Controllers
         public ActionResult Quantity(string id,int outletid)
         {
 
-            int shoeID = Miscellaneous.HabibDataClass.Habib.Shoes.Where(c => c.shoeArticle.Equals(id)).First().shoe_Id;
+            int shoeID = h.Shoes.Where(c => c.shoeArticle.Equals(id)).First().shoe_Id;
            
 
-            List<Shoe_Size> shoeSizes = Miscellaneous.HabibDataClass.Habib.Shoe_Size.Where(c => c.shoe_Id == shoeID).ToList();
+            List<Shoe_Size> shoeSizes = h.Shoe_Size.Where(c => c.shoe_Id == shoeID).ToList();
 
             List<Shoe_Size_Color> shoe_Size_Colors = new List<Shoe_Size_Color>();
             
