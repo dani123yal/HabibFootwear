@@ -86,6 +86,11 @@ namespace HabeebFootwear.Controllers
 
             vendor_order.vendorsList = (from a in habib.Vendors
                                        select a).ToList();
+
+            ViewBag.Orders = "active";
+            ViewBag.orderDisplay = "block";
+            ViewBag.createOrder = "active";
+
             return View(vendor_order);
         }
 
@@ -137,7 +142,9 @@ namespace HabeebFootwear.Controllers
         public ActionResult VendorOrderList()
         {
             List<VendorOrder> vo = habib.VendorOrders.ToList();
-
+            ViewBag.Orders = "active";
+            ViewBag.orderDisplay = "block";
+            ViewBag.orderList = "active";
             return View(vo);
         }
 

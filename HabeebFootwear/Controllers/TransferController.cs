@@ -33,6 +33,11 @@ namespace HabeebFootwear.Controllers
             model.transferRecord = record;
 
             model.shoes = habib.Shoes.ToList();
+
+            ViewBag.transfer = "active";
+            ViewBag.orderDisplaya = "block";
+            ViewBag.createTransfer = "active";
+
             return View(model);
         }
 
@@ -99,6 +104,9 @@ namespace HabeebFootwear.Controllers
         public ActionResult ViewTransfer()
         {
             List<TransferRecord> record = habib.TransferRecords.ToList();
+            ViewBag.transfer = "active";
+            ViewBag.orderDisplaya = "block";
+            ViewBag.viewTransfers = "active";
             return View(record);
         }
 
