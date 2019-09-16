@@ -11,7 +11,7 @@ namespace HabeebFootwear.Controllers
         // GET: PointOfSale
         public ActionResult Index()
         {
-
+            ViewBag.PointOfSale = "active";
             
             
             return View(Miscellaneous.HabibDataClass.Habib.Shoes.ToList());
