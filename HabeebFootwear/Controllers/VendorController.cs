@@ -141,7 +141,7 @@ namespace HabeebFootwear.Controllers
                     paymentMode = paymentMethod,
                     paymentStatus = "Partial Paid",
                     totalAmount = totalAmount,
-                    amountRemaining = 0,
+                    amountRemaining = totalAmount,
                     totalQty = handler.getTotalQuantity(model.qty),
                     paymentType = "Partial"
                 };

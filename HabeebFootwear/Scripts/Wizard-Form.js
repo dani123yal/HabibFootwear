@@ -29,13 +29,13 @@ $(document).ready(function () {
             //alert("clicked for second one");
             emptyError = checkEmptyFields(1);
             isError = checkValidation(1);
-            if (isError) {
-                $('#error1').html("two rows cannot be same at a time..check the RED values");
+            if (emptyError) {
+                $('#error1').html("All fields are required");
                 document.documentElement.scrollTop = 0;
                 return;
             }
-            else if (emptyError) {
-                $('#error1').html("All fields are required");
+            else if (isError) {
+                $('#error1').html("two rows cannot be same at a time..check the RED values");
                 document.documentElement.scrollTop = 0;
                 return;
             }
@@ -47,13 +47,13 @@ $(document).ready(function () {
             //alert("clicked for third one");
             emptyError = checkEmptyFields(2);
             isError = checkValidation(2);
-            if (isError) {
-                $('#error2').html("two rows cannot be same at a time..check the RED values");
+            if (emptyError) {
+                $('#error2').html("All fields are required");
                 document.documentElement.scrollTop = 0;
                 return;
             }
-            else if (emptyError) {
-                $('#error2').html("All fields are required");
+            else if (isError) {
+                $('#error2').html("two rows cannot be same at a time..check the RED values");
                 document.documentElement.scrollTop = 0;
                 return;
             }
@@ -65,13 +65,13 @@ $(document).ready(function () {
             //alert("clicked for last one");
             emptyError = checkEmptyFields(3);
             isError = checkValidation(3);
-            if (isError) {
-                $('#error3').html("two rows cannot be same at a time..check the RED values");
+            if (emptyError) {
+                $('#error3').html("All fields are required");
                 document.documentElement.scrollTop = 0;
                 return;
             }
-            else if (emptyError) {
-                $('#error3').html("All fields are required");
+            else if (isError) {
+                $('#error3').html("two rows cannot be same at a time..check the RED values");
                 document.documentElement.scrollTop = 0;
                 return;
             }
@@ -139,7 +139,7 @@ function checkShoesNo() {
     for (var i = 0; i < no; i++) {
         var divElement = document.createElement("tr");
         divElement.innerHTML = "<td style='padding-top:13px;'>"+(i+1)+"</td><td >" +
-            "<input list='shoes' name = 'shoesToAdd[" + i + "]'  class='form-control articles' style='text-transform:uppercase;' onkeyup='this.value = this.value.toUpperCase();' required />" +
+            "<input list='shoes' name = 'shoesToAdd[" + i + "]'  class='form-control articles' style='text-transform:uppercase;' onkeyup='this.value = this.value.toUpperCase();' onfocusout='checkVariety(this,"+i+")' required />" +
             "</td > " +
             "<td><input type='number' min='1' name='shoesCost[" + i + "]' class='form-control shoeCostArr' placeholder='Enter Cost here' required /></td>" +
             "<td><select class='form-control gen' name='varieties[" + i + "]' class='form-control col-md-10'><option value = 'Gents' >Gents</option><option value='Ladies'>Ladies</option><option value='Kids'>Kids</option></select></td>" +
@@ -191,6 +191,15 @@ function step_3() {
     }
 }
 
+function checkVariety(object, index) {
+    var val = object.value;
+    var obj = $("#shoes").find("option[value='" + val + "']");
+    if (obj != null && obj.length > 0) {
+        document.getElementsByClassName("gen")[index].setAttribute("readonly", "readonly");
+        document.getElementsByClassName("gen")[index].value = "-------";
+    }
+}
+
 function ConvertToArray(elem) {
     var arr = [];
     for (var i = 0; i < elem.length; i++) {
@@ -205,11 +214,14 @@ function checkPaymentNo() {
     $('.payment_form').empty();
     for (var i = 0; i < no; i++) {
         var divElement = document.createElement("tr");
-        divElement.innerHTML += "<td style='padding-top:13px;'>" + (i + 1) + "</td><td >" +
-            "<td><input type='date' class='form-control' name='remainings[" + i + "].dueDate' /></td>" +
-            "<td><input type='number' name='remainings[" + i + "].remainingAmount' class='form-control' placeholder='Enter Amount to pay' min='1' /></td>";
+        divElement.innerHTML += "<td style='padding-top:13px;'>" + (i + 1) + "</td>" +
+            "<td><input type='text' class='form-control date-picker' name='remainings[" + i + "].dueDate' required/></td>" +
+            "<td><input type='number' name='remainings[" + i + "].remainingAmount' class='form-control' placeholder='Enter Amount to pay' min='1' required/></td>";
         document.getElementsByClassName("payment_form")[0].append(divElement);
     }
+    $('.date-picker').datepicker({
+        autoclose: true
+    })
 }
 
 

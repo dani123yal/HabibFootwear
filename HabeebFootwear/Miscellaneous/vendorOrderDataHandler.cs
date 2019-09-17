@@ -19,14 +19,13 @@ namespace HabeebFootwear.Miscellaneous
         {
             int count = 0;
             int i = 0;
-            Shoe obj;
             foreach(string shoe in shoes)
             {
                 //checked
                 count = habib.Shoes.Where(c => c.shoeArticle == shoe).Count();
                 if(count == 0)
                 {
-                    obj = new Shoe()
+                    Shoe obj = new Shoe()
                     {
                         shoeArticle = shoe,
                         shoeCost = Convert.ToInt32(shoesCost[i]),
@@ -39,7 +38,7 @@ namespace HabeebFootwear.Miscellaneous
                 else
                 {
                     //checked
-                    obj = habib.Shoes.Where(c => c.shoeArticle == shoe).First();
+                    Shoe obj = habib.Shoes.Where(c => c.shoeArticle == shoe).First();
                     obj.UpdateDate = date;
                     obj.shoeCost = Convert.ToInt32(shoesCost[i]);
                 }
