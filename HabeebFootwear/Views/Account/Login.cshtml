@@ -46,6 +46,7 @@
             {
                 @Html.AntiForgeryToken()
                 @TempData["error"]
+
                 <div class="form-group has-feedback">
                     <input class="form-control" type="text" name="UserName" placeholder="Username">
                 </div>
@@ -54,20 +55,21 @@
                 </div>
 
 
-
+                <div style="color:tomato">
+                    @ViewBag.error
+                </div>
 
                 @*<label style="float:left;margin-bottom:10px;color:black;font-size:16px;margin-top :0;margin-bottom:20px;">
-                    <input type="checkbox" style="padding-right:15px;"><label style="margin-left:10px">Remember Me</label>
-                </label>*@
+                <input type="checkbox" style="padding-right:15px;"><label style="margin-left:10px">Remember Me</label>
+            </label>*@
                 <!-- /.col -->
                 <button type="submit" style="height:40px;width:100%;color:white;border-radius:10px 10px;color:white;text-align:center;font-size:18px;margin-top:30px;margin-bottom:30px;" class="btn btn-primary btn-block btn-flat">LOGIN   </button>
             }
 
 
             <!-- /.social-auth-links -->
-
             @*<a href="register.html" style="float:left;color:white;font-size:16px;" class="text-center">Register</a>
-            <a href="#" style="color:white;float:right;font-size:16px;">Forget your Password?</a><br>*@
+        <a href="#" style="color:white;float:right;font-size:16px;">Forget your Password?</a><br>*@
         </div>
         <!-- /.login-box-body -->
     </div>

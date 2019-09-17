@@ -135,11 +135,20 @@
                             </span>
                         </a>
                         <ul class="treeview-menu" style="display: @ViewBag.orderDisplay;">
-                            <li class="@ViewBag.createOrder"><a href="#"><i class="fa fa-circle-o"></i> Create Order</a></li>
+                            <li class="@ViewBag.createOrder"><a href="/Vendor/CreateOrder"><i class="fa fa-circle-o"></i> Create Order</a></li>
                             <li class="@ViewBag.orderList"><a href="/Vendor/VendorOrderList"><i class="fa fa-circle-o"></i> Order List</a></li>
                             <li class="@ViewBag.payments"><a href="#"><i class="fa fa-circle-o"></i> Payments</a></li>
 
                         </ul>
+                    </li>
+
+
+                    <li class="">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>Sales List</span>
+                            <span class="pull-right-container">
+                            </span>
+                        </a>
                     </li>
 
                     <li class="treeview @ViewBag.transfer " style="height: auto;">
@@ -149,9 +158,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        <ul class="treeview-menu" style="display: @ViewBag.orderDisplay;">
-                            <li class="@ViewBag.createTransfer"><a href="#"><i class="fa fa-circle-o"></i> Create Transfer</a></li>
-                            <li class="@ViewBag.viewTransfers"><a href="#"><i class="fa fa-circle-o"></i> View Transfers</a></li>
+                        <ul class="treeview-menu" style="display: @ViewBag.orderDisplaya;">
+                            <li class="@ViewBag.createTransfer"><a href="/transfer/createtransfer/1"><i class="fa fa-circle-o"></i> Create Transfer</a></li>
+                            <li class="@ViewBag.viewTransfers"><a href="/transfer/ViewTransfer"><i class="fa fa-circle-o"></i> View Transfers</a></li>
 
                         </ul>
                     </li>
