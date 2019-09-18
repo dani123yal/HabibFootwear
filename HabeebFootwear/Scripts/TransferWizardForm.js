@@ -54,8 +54,6 @@ $(document).ready(function () {
 
 });
 
-var shoesArr = []
-
 function nextTab(elem) {
     $(elem).next().find('a[data-toggle="tab"]').click();
 }
@@ -69,12 +67,13 @@ function checkShoesNo() {
     for (var i = 0; i < no; i++) {
         var divElement = document.createElement("tr");
         divElement.innerHTML = "<td style='padding-top:13px;'>" + (i + 1) + "</td><td >" +
-            "<select class='form-control articles' style='text-transform:uppercase;' onkeyup='this.value = this.value.toUpperCase();' required >" + document.getElementById("shoes").innerHTML + "</select>" +
+            "<select class='form-control articles select2' style='width:100%;'>" + document.getElementById("shoes").innerHTML + "</select>" +
             "</td> " +
             "<td><input type='number' min='1' class='form-control sizeNoArr' placeholder='Enter no. of sizes here' required /></td>";
         document.getElementsByClassName("shoe_form")[0].append(divElement);
     }
 
+    $('.select2').select2()
 }
 
 

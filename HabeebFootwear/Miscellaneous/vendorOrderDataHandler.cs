@@ -19,14 +19,13 @@ namespace HabeebFootwear.Miscellaneous
         {
             int count = 0;
             int i = 0;
-            Shoe obj;
             foreach(string shoe in shoes)
             {
                 //checked
                 count = habib.Shoes.Where(c => c.shoeArticle == shoe).Count();
                 if(count == 0)
                 {
-                    obj = new Shoe()
+                    Shoe obj = new Shoe()
                     {
                         shoeArticle = shoe,
                         shoeCost = Convert.ToInt32(shoesCost[i]),
@@ -39,12 +38,12 @@ namespace HabeebFootwear.Miscellaneous
                 else
                 {
                     //checked
-                    obj = habib.Shoes.Where(c => c.shoeArticle == shoe).First();
+                    Shoe obj = habib.Shoes.Where(c => c.shoeArticle == shoe).First();
                     obj.UpdateDate = date;
                     obj.shoeCost = Convert.ToInt32(shoesCost[i]);
                 }
 
-                addNewBatch(obj.shoe_Id,Convert.ToInt32(obj.shoeCost),obj.UpdateDate);
+                //addNewBatch(obj.shoe_Id,Convert.ToInt32(obj.shoeCost),obj.UpdateDate);
 
             }
             habib.SaveChanges();
@@ -190,7 +189,8 @@ namespace HabeebFootwear.Miscellaneous
             VendorPayment payment = new VendorPayment() {
                 vendorOrder_Id = orderId,
                 amount = total,
-                paymentDate = date
+                paymentDate = date,
+                deleteStatus = "N"
             };
 
 
@@ -198,13 +198,30 @@ namespace HabeebFootwear.Miscellaneous
             habib.SaveChanges();
         }
 
-        public void addNewBatch(int shoeId, int cost, DateTime date)
+        public void addPartialPayments(int vendorOrd_ID, List<RemainingPayment> remains)
+        {
+            foreach(RemainingPayment pay in remains)
+            {
+                RemainingPayment obj = new RemainingPayment()
+                {
+                    dueDate = pay.dueDate,
+                    remainingAmount = pay.remainingAmount,
+                    vendorOrder_Id = vendorOrd_ID
+                };
+
+                habib.RemainingPayments.Add(obj);
+            }
+            habib.SaveChanges();
+        }
+
+        public void addNewBatch(int shoeId, int cost, DateTime date, int vendorOrd_ID)
         {
             Batch batch = new Batch()
             {
                 shoe_Id = shoeId,
                 cost = cost,
-                batchDate = date
+                batchDate = date,
+                vendorOrder_Id = vendorOrd_ID
             };
 
             habib.Batches.Add(batch);

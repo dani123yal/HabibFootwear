@@ -36,5 +36,8 @@ namespace HabeebFootwear.View_Modals
         public List<string> varieties { get; set; }
 
         public List<string> qty { get; set; }
+
+        public List<RemainingPayment> remainings { get; set; }
+        
     }
 }
