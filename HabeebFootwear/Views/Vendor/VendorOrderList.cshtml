@@ -51,70 +51,73 @@
     <!-- /.modal-dialog -->
 </div>
 
-<table class="table table-striped">
-    <tr>
-        <th>
-            Order ID
-        </th>
-
-        <th>
-            Vendor Name
-        </th>
-        <th>
-            Date Of Order
-        </th>
-        <th>
-            Total Amount
-        </th>
-        <th>
-            Amount Remaining
-        </th>
-        <th>
-            Total Shoes Quantity
-        </th>
-        <th>
-            Payment Status
-        </th>
-        <th>
-            Payment Mode
-        </th>
-        <th>Action</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table id="example1" class="table table-striped">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.vendorOrder_Id)
-            </td>
+            <th>
+                Order ID
+            </th>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Vendor.vendorName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dateOfOrder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.totalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.amountRemaining)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.totalQty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.paymentStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.paymentMode)
-            </td>
-            <td>
-                <button class="btn btn-primary" onclick="rrr(@item.vendorOrder_Id)">Details</button>
-            </td>
+            <th>
+                Vendor Name
+            </th>
+            <th>
+                Date Of Order
+            </th>
+            <th>
+                Total Amount
+            </th>
+            <th>
+                Amount Remaining
+            </th>
+            <th>
+                Total Shoes Quantity
+            </th>
+            <th>
+                Payment Status
+            </th>
+            <th>
+                Payment Mode
+            </th>
+            <th>Action</th>
         </tr>
-    }
+    </thead>
 
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vendorOrder_Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vendor.vendorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateOfOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amountRemaining)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentMode)
+                </td>
+                <td>
+                    <button class="btn btn-primary" onclick="rrr(@item.vendorOrder_Id)">Details</button>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 <script type="text/javascript">
 

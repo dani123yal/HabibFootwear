@@ -44,5 +44,11 @@ namespace HabeebFootwear.Controllers
 
             return result;
         }
+
+        public int getPrice(string id)
+        {
+            int a = Convert.ToInt32( Miscellaneous.HabibDataClass.Habib.Shoes.Where(c => c.shoeArticle.Equals(id)).First().shoePrice);
+            return a;
+        }
     }
 }
