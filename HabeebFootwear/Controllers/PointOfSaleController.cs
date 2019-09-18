@@ -50,5 +50,55 @@ namespace HabeebFootwear.Controllers
             int a = Convert.ToInt32( Miscellaneous.HabibDataClass.Habib.Shoes.Where(c => c.shoeArticle.Equals(id)).First().shoePrice);
             return a;
         }
+
+        [HttpGet]
+        public string checkout(string[] articles, string[] sizes, string[] colors, string[] quantity, string total)
+        {
+
+
+            Models.CustomerOrder customerOrder = new Models.CustomerOrder()
+            {
+                customerName = "",
+                dateOfOrder = DateTime.Now,
+
+                discount = 0,
+                employee_Id = 1,
+                finalAmount = int.Parse(total),
+                totalAmount = int.Parse(total),
+                deleteRemarks = "a"
+            };
+
+            Miscellaneous.HabibDataClass.Habib.CustomerOrders.Add(customerOrder);
+            Miscellaneous.HabibDataClass.Habib.SaveChanges();
+
+            int id = Miscellaneous.HabibDataClass.Habib.CustomerOrders.ToList().Last().customerOrder_Id;
+            List<Models.ShoeSizeColor_CustomerOrder> l = new List<Models.ShoeSizeColor_CustomerOrder>();
+
+            for (int i = 0; i < articles.Length; i++)
+            {
+                var temp1 = articles[i];
+                var temp2 = int.Parse(sizes[i]);
+               
+                var temp3 = colors[i];
+                var temp4 = quantity[i];
+                l.Add(new Models.ShoeSizeColor_CustomerOrder()
+                {
+                    batch_Id = 1,
+                    customerOrder_Id = id,
+                    price = Miscellaneous.HabibDataClass.Habib.Shoes.Where(c => c.shoeArticle.Equals(temp1)).First().shoePrice,
+                    quantity = int.Parse(temp4),
+                    shoeSizeColor_Id = Miscellaneous.HabibDataClass.Habib.Shoe_Size_Color.Where(c => c.Shoe_Size.Shoe.shoeArticle.Equals(temp1) && c.Shoe_Size.Size.sizeNo == temp2 && c.Color.colorName.Equals(temp3)).First().shoeSizeColor_Id
+                    
+
+                });
+            }
+
+            Miscellaneous.HabibDataClass.Habib.ShoeSizeColor_CustomerOrder.AddRange(l);
+            Miscellaneous.HabibDataClass.Habib.SaveChanges();
+
+            return "";
+
+        }
+
     }
 }

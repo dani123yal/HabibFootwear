@@ -215,7 +215,7 @@
 
             <!-- /.box-body -->
         </div>
-        <input type="button" value="Checkout" class="btn btn-primary"  />
+        <input type="button" value="Checkout" class="btn btn-primary" onclick="checkout()"  />
 
         <!-- /.box -->
         <!-- iCheck -->
@@ -244,6 +244,52 @@
 <script>
 
     document.getElementById("total").innerText = "0";
+
+    function checkout() {
+
+        
+
+        var w = "";
+        var q = 0;
+        for ( q = 0; q < window.array.length; q++) {
+            w += "articles=" + window.array[q] + "&";
+        }
+
+        for ( q = 0; q < window.array1.length; q++) {
+            w += "sizes=" + window.array1[q] + "&";
+        }
+
+        for ( q = 0; q < window.array1.length; q++) {
+            w += "colors=" + window.array2[q] + "&";
+        }
+        for (q = 0; q < window.array1.length; q++) {
+            w += "quantity=" + window.array3[q] + "&";
+        }
+
+        w = w.substring(0, w.length - 1);
+
+
+        w += "&total=" + document.getElementById("total").innerText;
+       // alert(w);
+
+
+        $.ajax({
+            url: '/pointofsale/checkout/?'+w,
+            type: "GET",
+            
+            
+            async: false,
+            success: function (data) {
+                //alert(data);
+                location.reload();
+            },
+            error: function (x, e) {
+                console.log(x.responseText);
+            }
+        });
+
+
+    }
 
     function twe(id, colorid) {
         //alert("/pointofsale/getColors/?id=" + id + "&sizeno=" + colorid);
