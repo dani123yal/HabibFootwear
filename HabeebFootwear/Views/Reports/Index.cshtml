@@ -1,0 +1,231 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reports</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Custom Tabs -->
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_1" data-toggle="tab"><h4>Top Sales</h4></a></li>
+                <li><a href="#tab_2" data-toggle="tab"><h4>Top Vendor Purchase</h4></a></li>
+                <li><a href="#tab_3" data-toggle="tab"><h4>Top Vendors</h4></a></li>
+                <li><a href="#tab_4" data-toggle="tab"><h4>Top Shoes In Warehouse</h4></a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_1">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Shoe Article
+                            </th>
+                            <th>
+                                Size
+                            </th>
+                            <th>
+                                Color
+                            </th>
+                            <th>
+                                Total Purchases
+                            </th>
+                        </tr>
+
+                        @{ HabeebFootwear.Models.Habib habib = new HabeebFootwear.Models.Habib();
+                            var topSales = habib.ShoeSizeColor_CustomerOrder.GroupBy( a => new
+                            {
+                                a.Shoe_Size_Color.Shoe_Size.Shoe.shoeArticle,
+                                a.Shoe_Size_Color.Shoe_Size.Size.sizeNo,
+                                a.Shoe_Size_Color.Color.colorName
+                            }
+                            ).Select(b => new
+                            {
+                                shoe = b.Key.shoeArticle,
+                                size = b.Key.sizeNo,
+                                color = b.Key.colorName,
+                                totalQty = b.Sum(c => c.quantity)
+                            }).OrderByDescending(d => d.totalQty).Take(10);
+                            int i = 1;
+                        }
+                        @foreach (var item in topSales)
+                        {
+                        <tr>
+                            <td>
+                                @i
+                            </td>
+                            <td>
+                                @item.shoe
+                            </td>
+                            <td>
+                                @item.size
+                            </td>
+                            <td>
+                                @item.color
+                            </td>
+                            <td>
+                                @item.totalQty
+                            </td>
+                        </tr>
+                            i++;
+                        }
+                    </table>
+                </div>
+                <div class="tab-pane" id="tab_2">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Shoe Article
+                            </th>
+                            <th>
+                                Number Of Shoes Purchased
+                            </th>
+                        </tr>
+
+                        @{ 
+                            var topVenPur = habib.VendorOrder_ShoeSizeColor.GroupBy(a => a.Shoe_Size_Color.Shoe_Size.Shoe.shoeArticle
+                            ).Select(b => new
+                            {
+                                shoe = b.Key,
+                                shoesOrdered = b.Sum(c => c.quantity)
+                            }).OrderByDescending(d => d.shoesOrdered).Take(10);
+                            i = 1;
+                        }
+                        @foreach (var item in topVenPur)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                </td>
+                                <td>
+                                    @item.shoe
+                                </td>
+                                <td>
+                                    @item.shoesOrdered
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_3">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Shoe Article
+                            </th>
+                            <th>
+                                Number Of Orders
+                            </th>
+                        </tr>
+
+                        @{
+                            var topVen = habib.VendorOrders.GroupBy(a => new
+                            {
+                                a.Vendor.vendorName,
+                                a.vendor_Id
+                            }).Select(b => new
+                            {
+                                vendors = b.Key,
+                                orders = b.Count(c => c.vendorOrder_Id != 0)
+                            }).OrderByDescending(d => d.orders).Take(10);
+                            i = 1;
+                        }
+                        @foreach (var item in topVen)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                </td>
+                                <td>
+                                    @item.vendors.vendorName
+                                </td>
+                                <td>
+                                    @item.orders
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_4">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Shoe Article
+                            </th>
+
+                            <th>
+                                Shoe Size
+                            </th>
+
+                            <th>
+                                Shoe Color
+                            </th>
+                            <th>
+                                Total Quantity in Warehouse
+                            </th>
+                        </tr>
+
+                        @{
+                            var topShoes = habib.Shoe_Size_Color.GroupBy(a => new
+                            {
+                                a.Shoe_Size.Shoe.shoeArticle,
+                                a.Shoe_Size.Size.sizeNo,
+                                a.Color.colorName
+                            }).Select(b => new
+                            {
+                                shoe = b.Key.shoeArticle,
+                                size = b.Key.sizeNo,
+                                color = b.Key.colorName,
+                                total = b.Sum(c => c.quantityInWH)
+                            }).OrderByDescending(d => d.total).Take(10);
+                            i = 1;
+                        }
+                        @foreach (var item in topShoes)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                </td>
+                                <td>
+                                    @item.shoe
+                                </td>
+                                <td>
+                                    @item.size
+                                </td>
+                                <td>
+                                    @item.color
+                                </td>
+                                <td>
+                                    @item.total
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+    </div>
+    <!-- /.col -->
+</div>

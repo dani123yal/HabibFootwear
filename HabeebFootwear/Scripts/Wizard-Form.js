@@ -198,6 +198,11 @@ function checkVariety(object, index) {
         document.getElementsByClassName("gen")[index].setAttribute("readonly", "readonly");
         document.getElementsByClassName("gen")[index].value = "-------";
     }
+    else {
+        //document.getElementsByClassName("gen")[index].setAttribute("readonly", "");
+        $(".gen").eq(index).attr("readonly", false);
+        document.getElementsByClassName("gen")[index].value = "Gents";
+    }
 }
 
 function ConvertToArray(elem) {

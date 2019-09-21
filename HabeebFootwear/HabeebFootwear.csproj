@@ -167,6 +167,7 @@
     <Compile Include="Controllers\OutletController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\PointOfSaleController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\ShoeController.cs" />
     <Compile Include="Controllers\TransferController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
@@ -7314,6 +7315,7 @@
     <Content Include="Views\Transfer\ViewTransfer.cshtml" />
     <Content Include="Views\Transfer\GetTransferDetails.cshtml" />
     <Content Include="Views\Payment\ViewPayment.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
