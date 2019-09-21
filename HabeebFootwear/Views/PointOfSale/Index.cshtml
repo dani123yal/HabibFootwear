@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_LayoutOutlet.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Point Of Sale</h2>
 
 
 
@@ -85,7 +85,6 @@
             });
     }
 </script>*@
-///////////////////////////////////////////////////////////////////////////////////////////////////////
 <div class="box-body">
     <div class="row">
 
@@ -186,31 +185,38 @@
             <div class="box-header">
                 <h3 class="box-title">Check out</h3>
             </div>
-            <div class="box-body" id="items">
+            <div class="box-body">
+                <div id="items"></div>
                 @*<div class="row">
-                        <div class="col-md-4">
-                            <div class="row">
-                                <label class="col-md-12">abc</label>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-12">abc</label>
-                            </div>
-                            <div class="row">
-                                <label class="col-md-12">abc</label>
-                            </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <label class="col-md-12">abc</label>
                         </div>
-                        <div class="col-md-4">
-
+                        <div class="row">
+                            <label class="col-md-12">abc</label>
                         </div>
-                        <div class="col-md-4">
-
+                        <div class="row">
+                            <label class="col-md-12">abc</label>
                         </div>
+                    </div>
+                    <div class="col-md-4">
 
-                    </div>*@
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+
+                </div>*@
+
+                <hr />
+                <h3 class="pull-right" style="padding-right:50px;">Total : <span id="total"></span></h3>
 
             </div>
+
             <!-- /.box-body -->
         </div>
+        <input type="button" value="Checkout" class="btn btn-primary" onclick="checkout()"  />
+
         <!-- /.box -->
         <!-- iCheck -->
         <!-- /.box -->
@@ -228,7 +234,7 @@
 
 
                 , success: function (data) {
-                    alert(data);
+                    //alert(data);
                     $("#sizes").html(data);
                 }
             });
@@ -237,8 +243,56 @@
 
 <script>
 
+    document.getElementById("total").innerText = "0";
+
+    function checkout() {
+
+        
+
+        var w = "";
+        var q = 0;
+        for ( q = 0; q < window.array.length; q++) {
+            w += "articles=" + window.array[q] + "&";
+        }
+
+        for ( q = 0; q < window.array1.length; q++) {
+            w += "sizes=" + window.array1[q] + "&";
+        }
+
+        for ( q = 0; q < window.array1.length; q++) {
+            w += "colors=" + window.array2[q] + "&";
+        }
+        for (q = 0; q < window.array1.length; q++) {
+            w += "quantity=" + window.array3[q] + "&";
+        }
+
+        w = w.substring(0, w.length - 1);
+
+
+        w += "&total=" + document.getElementById("total").innerText;
+       // alert(w);
+
+
+        $.ajax({
+            url: '/pointofsale/checkout/?'+w,
+            type: "GET",
+            
+            
+            async: false,
+            success: function (data) {
+                //alert(data);
+                location.reload();
+            },
+            error: function (x, e) {
+                console.log(x.responseText);
+            }
+        });
+
+
+    }
+
     function twe(id, colorid) {
-        alert("/pointofsale/getColors/?id=" + id + "&sizeno=" + colorid);
+        //alert("/pointofsale/getColors/?id=" + id + "&sizeno=" + colorid);
         $.ajax(
             {
                 url: "/pointofsale/getColors/?id=" + id + "&sizeno=" + colorid,
@@ -248,18 +302,57 @@
 
 
                 , success: function (data) {
-                    alert(data);
+                    //alert(data);
                     $("#colors").html(data);
                 }
             });
     }
 </script>
 <script>
-    var Article = $("#shoess option:selected").text();
-    var Size = $("#sizes option:selected").text();
-    var Color = $("#colors option:selected").text();
-    var vOId = $("#batch").text();
+    window.i = 0;
+    window.array = [];
+    window.array1 = [];
+    window.array2 = [];
+    window.array3 = [];
+    window.array4 = [];
     $('#Add').click(function () {
-        $('#items').append('<div class="row"><div class="col-md-4"><div class="row"><label class="col-md-12">Article No: "' + Article + '" </label></div><div class="row"> <label class="col-md-12">Size: "' + Size + '" </label></div><div class="row"><label class="col-md-12">Color: "' + Color + '" </label></div></div><div class="col-md-4"></div><div class="col-md-4"><div class="row"><label class="col-md-12">Price x Quantity</label></div><div class="row"><label class="col-md-12"></label></div></div></div></br>');
+        var Article = $("#shoess option:selected").text();
+        var Size = $("#sizes option:selected").text();
+        var Color = $("#colors option:selected").text();
+        var vOId = $("#batch").val();
+        
+        window.array[window.i] = Article;
+        window.array1[window.i] = Size;
+        window.array2[window.i] = Color;
+        window.array3[window.i] = vOId;
+        //alert(vOId);
+            
+        $.ajax({
+            url: "/pointofsale/getprice/" + Article,
+            type: "get",
+            async: false,
+            success: function (data) {
+               
+                window.array4[window.i] = data;
+                
+            }
+
+        });
+        
+        var tt = [];
+        $('#items').append('<div class="row"><div class="col-md-4"><div class="row"><label class="col-md-12">Article No: "' + Article + '" </label></div><div class="row"> <label class="col-md-12">Size: "' + Size + '" </label></div><div class="row"><label class="col-md-12">Color: "' + Color + '" </label></div></div><div class="col-md-4"></div><div class="col-md-4"><div class="row"><label class="col-md-12">Price x Quantity</label></div><div class="row"><label class="col-md-12">' + window.array4[window.i] + ' x ' + vOId + '</label></div></div></div></br>');
+
+        for (var a = 0; a <= window.i ; a++){
+            tt[a] = window.array3[a] * window.array4[a];
+        }
+
+        var sum = 0;
+
+        for (var a = 0; a <= window.i; a++) {
+            sum += tt[a];
+        }
+        document.getElementById('total').innerText = sum;
+
+        window.i++;
     });
 </script>
