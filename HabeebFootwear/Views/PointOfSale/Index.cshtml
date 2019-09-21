@@ -223,6 +223,10 @@
     </div>
     <!-- /.col (right) -->
 </div>
+
+<div class="row">
+    <div class="col"></div>
+</div>
 <script>
 
     function qwe(id) {
@@ -281,6 +285,11 @@
             async: false,
             success: function (data) {
                 //alert(data);
+                window.open(
+                    data.newURL,
+                    'PRINT',
+                    'height=400,width=600'
+                ).print();
                 location.reload();
             },
             error: function (x, e) {

@@ -52,10 +52,8 @@ namespace HabeebFootwear.Controllers
         }
 
         [HttpGet]
-        public string checkout(string[] articles, string[] sizes, string[] colors, string[] quantity, string total)
+        public ActionResult checkout(string[] articles, string[] sizes, string[] colors, string[] quantity, string total)
         {
-
-
             Models.CustomerOrder customerOrder = new Models.CustomerOrder()
             {
                 customerName = "",
@@ -96,9 +94,19 @@ namespace HabeebFootwear.Controllers
             Miscellaneous.HabibDataClass.Habib.ShoeSizeColor_CustomerOrder.AddRange(l);
             Miscellaneous.HabibDataClass.Habib.SaveChanges();
 
-            return "";
+            return Json(new { newURL = Url.Action("Receipt","PointOfSale", new { id = id }) }, JsonRequestBehavior.AllowGet );
 
         }
 
+
+        public ActionResult Receipt(int id)
+        {
+            Models.CustomerOrder customerOrder = Miscellaneous.HabibDataClass.Habib.CustomerOrders.Find(id);
+
+            List<Models.ShoeSizeColor_CustomerOrder> l = customerOrder.ShoeSizeColor_CustomerOrder.ToList();
+
+            View_Modals.posReciptModel posModel = new View_Modals.posReciptModel(customerOrder, l);
+            return View(posModel);
+        }
     }
 }
