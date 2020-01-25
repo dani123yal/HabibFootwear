@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using HabeebFootwear.Models;
+using WebMatrix.WebData;
+
 namespace HabeebFootwear.Controllers
 {
     public class ShoeController : Controller
@@ -15,6 +18,8 @@ namespace HabeebFootwear.Controllers
         // GET: Shoe
         public async Task<ActionResult> Index()
         {
+
+
             ViewBag.shoe = "active";
             return View();
         }
@@ -22,6 +27,19 @@ namespace HabeebFootwear.Controllers
 
         public ActionResult shoes()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             ViewBag.shoe = "active";
             var shoe = habib.Shoes.ToList();
                 return View(shoe);

@@ -13,6 +13,19 @@ namespace HabeebFootwear.Controllers
         // GET: PointOfSale
         public ActionResult Index()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Contains("outlet"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             ViewBag.PointOfSale = "active";
             
             
@@ -113,6 +126,13 @@ namespace HabeebFootwear.Controllers
 
         public ActionResult SalesHistory()
         {
+
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            
+
             if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
             {
                 ViewBag.layout = "~/Views/Shared/_Layout.cshtml";
@@ -135,6 +155,19 @@ namespace HabeebFootwear.Controllers
 
         public ActionResult CustomOrders()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Contains("outlet"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             ViewBag.customOrders = "active";
             return View("CustomOrders");
         }

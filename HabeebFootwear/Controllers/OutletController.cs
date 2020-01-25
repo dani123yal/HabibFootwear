@@ -18,6 +18,12 @@ namespace HabeebFootwear.Controllers
         // GET: Outlet
         public ActionResult Index()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            
+
             if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
             {
                 ViewBag.layout = "~/Views/Shared/_Layout.cshtml";
@@ -34,6 +40,11 @@ namespace HabeebFootwear.Controllers
 
         public ActionResult Shoes(int id)
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            
 
             List<Outlet_ShoeSizeColor> shoe_Size_Colors = Miscellaneous.HabibDataClass.Habib.Outlet_ShoeSizeColor.Where(c => c.outlet_Id == id).ToList(); ;
             // List<Shoe> shoes = shoe_Size_Colors.Select(c => c.Shoe_Size.Shoe).ToList();
@@ -83,6 +94,11 @@ namespace HabeebFootwear.Controllers
 
         public ActionResult warehouse()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+           
 
             List<Shoe_Size_Color> s = Miscellaneous.HabibDataClass.Habib.Shoe_Size_Color.Where(c => c.quantityInWH != 0).ToList();
             if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))

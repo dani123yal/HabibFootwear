@@ -7,6 +7,8 @@ using HabeebFootwear.Models;
 using HabeebFootwear.Miscellaneous;
 using HabeebFootwear.View_Modals;
 using System.Threading.Tasks;
+using WebMatrix.WebData;
+using System.Web.Security;
 
 namespace HabeebFootwear.Controllers
 {
@@ -18,6 +20,19 @@ namespace HabeebFootwear.Controllers
         // GET: Transfer
         public ActionResult OutletSelect()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             ViewBag.transfer = "active";
             ViewBag.orderDisplaya = "block";
             ViewBag.createTransfer = "active";
@@ -26,6 +41,19 @@ namespace HabeebFootwear.Controllers
 
         public ActionResult CreateTransfer(int id)
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             a = 0;
             TransferRecord record = new TransferRecord()
             {
@@ -106,6 +134,19 @@ namespace HabeebFootwear.Controllers
 
         public ActionResult ViewTransfer()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             List<TransferRecord> record = habib.TransferRecords.ToList();
             ViewBag.transfer = "active";
             ViewBag.orderDisplaya = "block";

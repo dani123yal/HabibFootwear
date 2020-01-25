@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using HabeebFootwear.Miscellaneous;
 using HabeebFootwear.Models;
+using WebMatrix.WebData;
 
 namespace HabeebFootwear.Controllers
 {
@@ -15,6 +17,20 @@ namespace HabeebFootwear.Controllers
         // GET: Vendor
         public ActionResult Index()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
+
             var Employee_List = (from a in habib.Employees select a).ToList();
             ViewBag.Employee = "active";
             ViewBag.elist = "active";
@@ -23,6 +39,19 @@ namespace HabeebFootwear.Controllers
         }
         public ActionResult Create()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             ViewBag.Employee = "active";ViewBag.ecreate = "active";
             ViewBag.elistDisplay = "block";
             return View();

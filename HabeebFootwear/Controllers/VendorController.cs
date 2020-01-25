@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using HabeebFootwear.Models;
 using HabeebFootwear.Miscellaneous;
 using HabeebFootwear.View_Modals;
+using WebMatrix.WebData;
+using System.Web.Security;
 
 namespace HabeebFootwear.Controllers
 {
@@ -18,6 +20,19 @@ namespace HabeebFootwear.Controllers
         // GET: Vendor
         public ActionResult Index()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             var Vendnor_List = (from a in habib.Vendors select a).ToList();
             ViewBag.Vendor = "active";
             ViewBag.vlist = "active";
@@ -26,6 +41,19 @@ namespace HabeebFootwear.Controllers
         }
         public ActionResult Create()
         {
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             ViewBag.vcreate = "active";ViewBag.Vendor = "active";
             ViewBag.vlistDisplay = "block";
             return View();
@@ -72,7 +100,20 @@ namespace HabeebFootwear.Controllers
         [HttpGet]
         public ActionResult CreateOrder()
         {
-            
+
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
             VendorOrderViewModel vendor_order = new VendorOrderViewModel();
 
             vendor_order.shoesList = (from a in habib.Shoes
@@ -163,6 +204,19 @@ namespace HabeebFootwear.Controllers
 
         public ActionResult VendorOrderList()
         {
+
+            if (!WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+                {
+                    WebSecurity.Logout();
+                    return RedirectToAction("Login", "Account");
+                }
+            }
             List<VendorOrder> vo = habib.VendorOrders.ToList();
             
             ViewBag.Orders = "active";
