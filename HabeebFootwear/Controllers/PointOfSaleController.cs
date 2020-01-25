@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using WebMatrix.WebData;
 
 namespace HabeebFootwear.Controllers
 {
@@ -107,6 +109,34 @@ namespace HabeebFootwear.Controllers
 
             View_Modals.posReciptModel posModel = new View_Modals.posReciptModel(customerOrder, l);
             return View(posModel);
+        }
+
+        public ActionResult SalesHistory()
+        {
+            if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+            {
+                ViewBag.layout = "~/Views/Shared/_Layout.cshtml";
+            }
+            else
+            {
+                ViewBag.layout = "~/Views/Shared/_LayoutOutlet.cshtml";
+            }
+            ViewBag.salesHistory = "active";
+            List<Models.CustomerOrder> customerOrders = Miscellaneous.HabibDataClass.Habib.CustomerOrders.ToList();
+            customerOrders.Reverse();
+            return View(customerOrders);
+        }
+
+        public ActionResult SalesHistoryDetails(int id)
+        {
+            List<Models.ShoeSizeColor_CustomerOrder> shoes = Miscellaneous.HabibDataClass.Habib.ShoeSizeColor_CustomerOrder.Where(c => c.customerOrder_Id == id).ToList();
+            return View(shoes);
+        }
+
+        public ActionResult CustomOrders()
+        {
+            ViewBag.customOrders = "active";
+            return View("CustomOrders");
         }
     }
 }

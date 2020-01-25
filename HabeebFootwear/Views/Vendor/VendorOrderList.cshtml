@@ -5,8 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Vendor Orders</h2>
-<hr />
+
 
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
@@ -15,7 +14,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Default Modal</h4>
+                <h4 class="modal-title">Order Details</h4>
             </div>
             <div class="modal-body">
 
@@ -42,111 +41,148 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-default center-block" data-dismiss="modal">Close</button>
+                
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
+<div class="box box-success">
+    <div class="box-header with-border" style="padding-bottom:0px;">
+        <div class="jumbotron" style="padding-bottom:0px;padding-top:0px; background-color:white;">
+            <center>
+                <h2 style="font-family:Arial;font-size:35px;font-weight:bold;">Vendor Orders</h2>
+                <div id="newsearch"></div>
+            </center>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="table-responsive">
+            <div class="col-md-12">
+                <table id="example1" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Order ID
+                            </th>
 
-<table id="example1" class="table table-striped">
-    <thead>
-        <tr>
-            <th>
-                Order ID
-            </th>
+                            <th>
+                                Vendor Name
+                            </th>
+                            <th>
+                                Date Of Order
+                            </th>
+                            <th>
+                                Total Amount
+                            </th>
+                            <th>
+                                Amount Remaining
+                            </th>
+                            <th>
+                                Total Shoes Quantity
+                            </th>
+                            <th>
+                                Payment Status
+                            </th>
+                            <th>
+                                Payment Mode
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-            <th>
-                Vendor Name
-            </th>
-            <th>
-                Date Of Order
-            </th>
-            <th>
-                Total Amount
-            </th>
-            <th>
-                Amount Remaining
-            </th>
-            <th>
-                Total Shoes Quantity
-            </th>
-            <th>
-                Payment Status
-            </th>
-            <th>
-                Payment Mode
-            </th>
-            <th>Action</th>
-        </tr>
-    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.vendorOrder_Id)
+                                </td>
 
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.vendorOrder_Id)
-                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Vendor.vendorName)
+                                </td>
+                                <td>
+                                    
+                                        @item.dateOfOrder.Value.ToShortDateString()
+                                    
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.totalAmount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.amountRemaining)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.totalQty)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.paymentStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.paymentMode)
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" onclick="rrr(@item.vendorOrder_Id)">Details</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        </div>
+        <script src="~/Theme/AdminLTE-2.4.13/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="~/Theme/AdminLTE-2.4.13/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="~/Theme/AdminLTE-2.4.13/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="~/Theme/AdminLTE-2.4.13/bower_components/fastclick/lib/fastclick.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                // alert('hello');
+                $('#example1').DataTable({
+                    'paging': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false,
+                    initComplete: function () {
+                        $("#example1_filter").addClass("pull-right");
+                        $("#example1_filter").children().children().css("margin-left", "10px");
+                        
+                    }
+                })
+            })
+            function rrr(id) {
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Vendor.vendorName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.dateOfOrder)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.totalAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.amountRemaining)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.totalQty)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.paymentStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.paymentMode)
-                </td>
-                <td>
-                    <button class="btn btn-primary" onclick="rrr(@item.vendorOrder_Id)">Details</button>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-<script type="text/javascript">
+                $(function () {
+                    $('.quantity').html('');
 
-    function rrr(id) {
+                    $('.colors1').html('');
 
-        $(function () {
-            $('.quantity').html('');
-
-            $('.colors1').html('');
-
-            $('.target').load('/vendor/VendorOrderDetails/'+ id, function (responseText, textStatus, XMLHttpRequest) {
-                if (textStatus == "success") {
-                    // all good!
-
-
-                    $('#modal-default').modal('toggle');
-                   // $('.flat-red').iCheck({ checkboxClass: 'icheckbox_flat-green', radioClass: 'iradio_flat-green' });
-                }
-                if (textStatus == "error") {
-                    // oh noes!
-                }
-            });
+                    $('.target').load('/vendor/VendorOrderDetails/' + id, function (responseText, textStatus, XMLHttpRequest) {
+                        if (textStatus == "success") {
+                            // all good!
 
 
-
+                            $('#modal-default').modal('toggle');
+                            // $('.flat-red').iCheck({ checkboxClass: 'icheckbox_flat-green', radioClass: 'iradio_flat-green' });
+                        }
+                        if (textStatus == "error") {
+                            // oh noes!
+                        }
+                    });
 
 
 
 
-        });
-    }
-</script>
+
+
+
+                });
+            }
+        </script>

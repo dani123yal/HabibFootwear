@@ -17,6 +17,7 @@ namespace HabeebFootwear.Controllers
 
                 if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
                 {
+                    ViewBag.dashboard = "active";
                     return View();
                 }
                 else
@@ -43,6 +44,7 @@ namespace HabeebFootwear.Controllers
 
                 if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Contains("outlet"))
                 {
+                    ViewBag.dashboard = "active";
                     return View();
                 }
                 else

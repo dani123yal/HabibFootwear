@@ -1,0 +1,164 @@
+﻿@model IEnumerable<HabeebFootwear.Models.CustomerOrder>
+
+@{
+    ViewBag.Title = "SalesHistory";
+    Layout = ViewBag.layout;
+}
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Order Details</h4>
+            </div>
+            <div class="modal-body">
+
+
+
+                @{
+
+
+                    <div class="target">
+
+                    </div>
+                    <div class="colors1">
+
+                    </div>
+
+                    <div class="quantity">
+
+                    </div>
+
+
+                }
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default center-block" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="box box-success">
+    <div class="box-header with-border" style="padding-bottom:0px;">
+        <div class="jumbotron" style="padding-bottom:0px;padding-top:0px; background-color:white;">
+            <center>
+                <h2 style="font-family:Arial;font-size:35px;font-weight:bold;">Sales History</h2>
+                <div id="newsearch"></div>
+            </center>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="table-responsive">
+            <div class="col-md-12">
+                <table class="table table-striped" id="example1">
+                    <thead>
+                        <tr>
+                            <th>
+                                Order ID
+                            </th>
+                            <th>
+                                Date Of Order
+                            </th>
+                            <th>
+                                Total Amount
+                            </th>
+
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.customerOrder_Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.dateOfOrder)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.totalAmount)
+                                </td>
+
+
+                                <td>
+                                    <button class="btn btn-primary" onclick="rrr(@item.customerOrder_Id);">Details</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+                </div>
+            </div>
+        </div>
+            </div>
+
+            <script src="~/Theme/AdminLTE-2.4.13/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+            <script src="~/Theme/AdminLTE-2.4.13/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+            <script src="~/Theme/AdminLTE-2.4.13/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+            <!-- FastClick -->
+            <script src="~/Theme/AdminLTE-2.4.13/bower_components/fastclick/lib/fastclick.js"></script>
+
+            <script type="text/javascript">
+                $(function () {
+                    // alert('hello');
+                    $('#example1').DataTable({
+                        'paging': true,
+                        'lengthChange': true,
+                        'searching': true,
+                        'ordering': true,
+                        'info': true,
+                        'autoWidth': false,
+                        "order": [[1, "desc"]],
+                        initComplete: function () {
+                            $("#example1_filter").addClass("pull-right");
+                            $("#example1_filter").children().children().css("margin-left", "10px");
+
+                        }
+                    })
+                })
+
+
+                function rrr(id) {
+                    $(function () {
+                        $('.quantity').html('');
+
+                        $('.colors1').html('');
+
+                        $('.target').load('/pointofsale/saleshistorydetails/' + id, function (responseText, textStatus, XMLHttpRequest) {
+                            if (textStatus == "success") {
+                                // all good!
+
+
+                                $('#modal-default').modal('toggle');
+                                // $('.flat-red').iCheck({ checkboxClass: 'icheckbox_flat-green', radioClass: 'iradio_flat-green' });
+                            }
+                            if (textStatus == "error") {
+                                // oh noes!
+                            }
+                        });
+
+
+
+
+
+
+
+                    });
+                }
+
+            </script>
+

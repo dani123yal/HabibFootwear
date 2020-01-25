@@ -33,64 +33,90 @@
 
 
 <div class="box box-success">
-    <div class="box-header">
-        <h2>Transfer Details</h2>
+    <div class="box-header with-border" style="padding-bottom:0px;">
+        <div class="jumbotron" style="padding-bottom:0px;padding-top:0px; background-color:white;">
+    <center>
+        <h2 style="font-family:Arial;font-size:35px;font-weight:bold;">Transfer Details</h2>
+        <div id="newsearch"></div>
+    </center>
+</div>
     </div>
     <div class="box-body">
-        <table class="table table-responsive" id="example1">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Outlet.outletName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.dateOfTransfer)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.shoesTransfered)
-                    </th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Outlet.outletName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.dateOfTransfer)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.shoesTransfered)
-                        </td>
-                        <td>
-                            <input type="button" class="btn btn-info" value="Details" onclick="getDetails(@item.transfer_Id)" /> |
-                            @Html.ActionLink("Details", "Details", new { id = item.transfer_Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.transfer_Id })
-                        </td>
-                    </tr>
-                }
-            </tbody>            
-        </table>
-    </div>
-</div>
+        <div class="table-responsive">
+            <div class="col-md-12">
+                <table class="table" id="example1">
+                    <thead>
+                        <tr>
+                            <th>
+                                Outlet Name
+                            </th>
+                            <th>
+                                Date of Transfer
+                            </th>
+                            <th>
+                                Shoes Transfered
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Outlet.outletName)
+                                </td>
+                                <td >
+                                    
+                                        @Html.DisplayFor(modelItem => item.dateOfTransfer)
+                                    
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.shoesTransfered)
+                                </td>
+                                <td>
+                                    <input type="button" class="btn btn-info" value="Details" onclick="getDetails(@item.transfer_Id)" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
 
-<script>
-    function getDetails(id) {
-        $.ajax({
-            type: "GET",
-            url: '/Transfer/GetTransferDetails/' + id,
-            contentType: "application/json; charset=utf-8",
+        <script>
 
-            success: function (data) {
-                $('.target').html(data);
-                $('#modal-default').modal('toggle');
-            },
+            $(function () {
 
-        });
-    }
+                $('#example1').DataTable({
+                    'paging': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false,
+                    initComplete: function () {
+                        $("#example1_filter").addClass("pull-right");
+                        $("#example1_filter").children().children().css("margin-left", "10px");
 
-</script>
+                    }
+                })
+            })
+            function getDetails(id) {
+                $.ajax({
+                    type: "GET",
+                    url: '/Transfer/GetTransferDetails/' + id,
+                    contentType: "application/json; charset=utf-8",
+
+                    success: function (data) {
+                        $('.target').html(data);
+                        $('#modal-default').modal('toggle');
+                    },
+
+                });
+            }
+
+        </script>
 

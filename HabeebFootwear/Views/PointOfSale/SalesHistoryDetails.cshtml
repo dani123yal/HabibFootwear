@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HabeebFootwear.Models.ShoeSizeColor_CustomerOrder>
+
+@{
+    Layout = null;
+}
+
+
+    <table class="table">
+        <tr>
+            <th>
+                Article No
+            </th>
+            <th>
+                Size
+            </th>
+            <th>
+                Color
+            </th>
+            <th>Price</th>
+            <th>
+                Quantity
+            </th>
+            
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Shoe_Size_Color.Shoe_Size.Shoe.shoeArticle
+            </td>
+            <td>
+                @item.Shoe_Size_Color.Shoe_Size.Size.sizeNo
+            </td>
+            <td>
+                @item.Shoe_Size_Color.Color.colorName
+            </td>
+            <td>
+                @item.price
+            </td>
+            <td>
+                @item.quantity
+            </td>
+
+        </tr>
+    }
+    
+    </table>
+
+<div class="pull-right" style="margin-right:10%">
+    <h3>Total: @Model.First().CustomerOrder.totalAmount</h3>
+</div>
+<br />
+<br/>

@@ -4,8 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using HabeebFootwear.Models;
-
+using WebMatrix.WebData;
 
 namespace HabeebFootwear.Controllers
 {
@@ -17,8 +18,19 @@ namespace HabeebFootwear.Controllers
         // GET: Outlet
         public ActionResult Index()
         {
+            if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+            {
+                ViewBag.layout = "~/Views/Shared/_Layout.cshtml";
+            }
+            else
+            {
+                ViewBag.layout = "~/Views/Shared/_LayoutOutlet.cshtml";
+            }
+            ViewBag.outlet = "active";
             return View();
         }
+
+       
 
         public ActionResult Shoes(int id)
         {
@@ -26,12 +38,21 @@ namespace HabeebFootwear.Controllers
             List<Outlet_ShoeSizeColor> shoe_Size_Colors = Miscellaneous.HabibDataClass.Habib.Outlet_ShoeSizeColor.Where(c => c.outlet_Id == id).ToList(); ;
             // List<Shoe> shoes = shoe_Size_Colors.Select(c => c.Shoe_Size.Shoe).ToList();
 
-          
-            
+            if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+            {
+                ViewBag.layout = "~/Views/Shared/_Layout.cshtml";
+            }
+            else
+            {
+                ViewBag.layout = "~/Views/Shared/_LayoutOutlet.cshtml";
+            }
 
+
+            ViewBag.outlet = "active";
             return View(shoe_Size_Colors);
         }
 
+        
 
         public ActionResult Quantity(string id,int outletid)
         {
@@ -64,9 +85,19 @@ namespace HabeebFootwear.Controllers
         {
 
             List<Shoe_Size_Color> s = Miscellaneous.HabibDataClass.Habib.Shoe_Size_Color.Where(c => c.quantityInWH != 0).ToList();
-
+            if (Roles.GetRolesForUser(WebSecurity.CurrentUserName)[0].Equals("headOffice"))
+            {
+                ViewBag.layout = "~/Views/Shared/_Layout.cshtml";
+            }
+            else
+            {
+                ViewBag.layout = "~/Views/Shared/_LayoutOutlet.cshtml";
+            }
+            ViewBag.outlet = "active";
             return View(s);
         }
+
+       
 
         public ActionResult warehouseQuantity(string id)
         {

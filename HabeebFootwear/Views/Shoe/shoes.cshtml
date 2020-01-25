@@ -15,7 +15,7 @@
                 <h4 class="modal-title">Default Modal</h4>
             </div>
             <div class="modal-body">
-               
+
 
 
                 @{
@@ -71,39 +71,39 @@
                             <th>Shoe Variety</th>
                             <th>Date of Last Order</th>
                             <th>Action</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
+                            <tr>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.shoeArticle)
-                            </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.shoeArticle)
+                                </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.shoeCost)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.shoePrice)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.shoeVariety)
-                            </td>
-                            <td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.shoeCost)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.shoePrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.shoeVariety)
+                                </td>
+                                <td>
 
-                                @item.UpdateDate.ToShortDateString().ToString()
-                                
-                            </td>
-                            <td>
-                                <button class="btn" onclick="aaa(@item.shoe_Id)">Details</button>
-                                <button class="btn" onclick="uuu(@item.shoe_Id)">edit</button>
-                            </td>
-                           
+                                    @item.UpdateDate.ToShortDateString().ToString()
 
-                        </tr>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" onclick="aaa(@item.shoe_Id)">Details</button>
+                                    <button class="btn btn-success" onclick="uuu(@item.shoe_Id)">edit</button>
+                                </td>
+
+
+                            </tr>
 
                         }
 
@@ -125,17 +125,17 @@
 
         $.ajax({
             type: "GET",
-            url: '/Shoe/Details/'+id+'',
+            url: '/Shoe/Details/' + id + '',
             contentType: "application/json; charset=utf-8",
-            
+
             success: function (data) {
 
                 $('#modal-default').modal('toggle');
-                
+
             },
-            
+
         });
-        }
+    }
 
 </script>
 
@@ -145,14 +145,14 @@
 
         $(function () {
             $('.quantity').html('');
-   
+
             $('.colors1').html('');
 
             $('.target').load('/Shoe/Details/' + id, function (responseText, textStatus, XMLHttpRequest) {
                 if (textStatus == "success") {
                     // all good!
 
-                   
+
                     $('#modal-default').modal('toggle');
                     $('.flat-red').iCheck({ checkboxClass: 'icheckbox_flat-green', radioClass: 'iradio_flat-green' });
                 }
@@ -161,12 +161,12 @@
                 }
             });
 
-           
-            
 
 
-                
-            
+
+
+
+
         });
     }
 
@@ -175,28 +175,48 @@
 
         $(function () {
             $('.quantity').html('');
-   
+
             $('.colors1').html('');
 
             $('.target').load('/Shoe/edit/' + id, function (responseText, textStatus, XMLHttpRequest) {
                 if (textStatus == "success") {
                     // all good!
 
-                   
+
                     $('#modal-default').modal('toggle');
-                   
+
                 }
                 if (textStatus == "error") {
                     // oh noes!
                 }
             });
 
-           
-            
 
 
-                
-            
+
+
+
+
         });
     }
+</script>
+
+<script>
+
+    $(function () {
+
+        $('#example1').DataTable({
+            'paging': true,
+            'lengthChange': true,
+            'searching': true,
+            'ordering': true,
+            'info': true,
+            'autoWidth': true,
+            initComplete: function () {
+                $("#example1_filter").addClass("pull-right");
+                $("#example1_filter").children().children().css("margin-left", "10px");
+
+            }
+        })
+    })
 </script>

@@ -15,14 +15,15 @@ namespace HabeebFootwear.Controllers
         // GET: Shoe
         public async Task<ActionResult> Index()
         {
+            ViewBag.shoe = "active";
             return View();
         }
 
 
         public ActionResult shoes()
         {
-           
-                var shoe = habib.Shoes.ToList();
+            ViewBag.shoe = "active";
+            var shoe = habib.Shoes.ToList();
                 return View(shoe);
             
            

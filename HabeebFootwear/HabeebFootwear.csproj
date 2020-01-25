@@ -7318,6 +7318,9 @@
     <Content Include="Views\Payment\ViewPayment.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\PointOfSale\Receipt.cshtml" />
+    <Content Include="Views\PointOfSale\SalesHistory.cshtml" />
+    <Content Include="Views\PointOfSale\SalesHistoryDetails.cshtml" />
+    <Content Include="Views\PointOfSale\CustomOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

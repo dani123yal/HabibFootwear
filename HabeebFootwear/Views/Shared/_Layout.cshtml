@@ -84,10 +84,8 @@
                                 <!-- Menu Body -->
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-primary btn-flat">Change Password</a>
-                                    </div>
-                                    <div class="pull-right">
+                                    
+                                    <div class="text-center">
                                         <a href="/account/logout" class="btn btn-primary btn-flat">Sign out</a>
                                     </div>
                                 </li>
@@ -120,7 +118,7 @@
                     <li class="header">MAIN NAVIGATION</li>
 
                     <li class="@ViewBag.dashboard">
-                        <a href="#">
+                        <a href="/home/index">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             <span class="pull-right-container">
                             </span>
@@ -137,15 +135,15 @@
                         <ul class="treeview-menu" style="display: @ViewBag.orderDisplay;">
                             <li class="@ViewBag.createOrder"><a href="/Vendor/CreateOrder"><i class="fa fa-circle-o"></i> Create Order</a></li>
                             <li class="@ViewBag.orderList"><a href="/Vendor/VendorOrderList"><i class="fa fa-circle-o"></i> Order List</a></li>
-                            <li class="@ViewBag.payments"><a href="#"><i class="fa fa-circle-o"></i> Payments</a></li>
+                            <!--<li class="@ViewBag.payments"><a href="#"><i class="fa fa-circle-o"></i> Payments</a></li>-->
 
                         </ul>
                     </li>
 
 
-                    <li class="">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Sales List</span>
+                    <li class="@ViewBag.salesHistory">
+                        <a href="/pointofsale/saleshistory">
+                            <i class="fa fa-navicon"></i> <span>Sales List</span>
                             <span class="pull-right-container">
                             </span>
                         </a>
@@ -153,13 +151,13 @@
 
                     <li class="treeview @ViewBag.transfer " style="height: auto;">
                         <a href="#">
-                            <i class="fa fa-industry"></i> <span>Transfers</span>
+                            <i class="fa fa-truck"></i> <span>Transfers</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu" style="display: @ViewBag.orderDisplaya;">
-                            <li class="@ViewBag.createTransfer"><a href="/transfer/createtransfer/1"><i class="fa fa-circle-o"></i> Create Transfer</a></li>
+                            <li class="@ViewBag.createTransfer"><a href="/transfer/outletselect"><i class="fa fa-circle-o"></i> Create Transfer</a></li>
                             <li class="@ViewBag.viewTransfers"><a href="/transfer/ViewTransfer"><i class="fa fa-circle-o"></i> View Transfers</a></li>
 
                         </ul>
@@ -169,7 +167,7 @@
 
                     <li class="treeview @ViewBag.Vendor " style="height: auto;">
                         <a href="#">
-                            <i class="fa fa-industry"></i> <span>Vendor</span>
+                            <i class="fa fa-group"></i> <span>Vendor</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
@@ -196,7 +194,7 @@
 
                     <li class="@ViewBag.shoe">
                         <a href="/shoe/shoes">
-                            <i class="glyphicon glyphicon-gift"></i> <span>Shoe</span>
+                            <i class="glyphicon glyphicon-th"></i> <span>Shoes</span>
                             <span class="pull-right-container">
                             </span>
                         </a>
@@ -204,19 +202,13 @@
 
                     <li class="@ViewBag.outlet">
                         <a href="/Outlet/index">
-                            <i class="glyphicon glyphicon-gift"></i> <span>Stock</span>
+                            <i class="fa fa-database"></i> <span>Stock</span>
                             <span class="pull-right-container">
                             </span>
                         </a>
                     </li>
 
-                    <li class="@ViewBag.reports">
-                        <a href="/Outlet/index">
-                            <i class="glyphicon glyphicon-gift"></i> <span>Reports</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
+                   
 
 
 
@@ -260,8 +252,7 @@
                 <b>Version</b> 2.4.13
             </div>
 
-            <strong>Copyright &copy; 2014-2019 <a href="~/Theme/AdminLTE-2.4.13/https://adminlte.io">Frapps</a>.</strong> All rights
-            reserved.
+            <strong>Made with <i class="fa fa-heart" style="padding:2px;color:red;"></i> by<a href="#"> Aashir</a> </strong> 
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark" style="display: none;">

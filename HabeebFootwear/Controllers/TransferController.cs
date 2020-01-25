@@ -18,6 +18,9 @@ namespace HabeebFootwear.Controllers
         // GET: Transfer
         public ActionResult OutletSelect()
         {
+            ViewBag.transfer = "active";
+            ViewBag.orderDisplaya = "block";
+            ViewBag.createTransfer = "active";
             return View();
         }
 

@@ -80,3 +80,23 @@
         </div>
         <!-- /.box-body -->
     </div>  <!-- /.box -->
+
+    <script>
+
+        $(function () {
+
+            $('#example1').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true,
+                initComplete: function () {
+                    $("#example1_filter").addClass("pull-right");
+                    $("#example1_filter").children().children().css("margin-left", "10px");
+
+                }
+            })
+        })
+    </script>

@@ -26,10 +26,10 @@
                 <label class="control-label">Order No. : @Model.customerOrder.customerOrder_Id</label>
             </div>
             <div class="col-sm-12">
-                <label class="control-label">Customer Name : @Model.customerOrder.customerName</label>
+                <label class="control-label">Customer Name : ""</label>
             </div>
             <div class="col-sm-12">
-                <label class="control-label">Seller Name: @Model.customerOrder.Employee.employeeName</label>
+                <label class="control-label">Seller Name: ""</label>
             </div>
         </div>
         <div class="row">
@@ -64,12 +64,7 @@
         </div>
         <div class="row">
             <div class="col-sm-7"></div>
-            <div class="col-sm-5 pull-right">
-                <div class="row">
-                    <hr class="col-12" style="border:1px solid black" />
-                </div>
-                <label class="pull-right">Sub Total: @Model.customerOrder.totalAmount</label>
-            </div>
+            
         </div>
         <div class="row">
             <div class="col-sm-7"></div>
@@ -79,7 +74,7 @@
                 </div>
                 <label class="pull-right">Net Total: @Model.customerOrder.totalAmount</label>
                 <br />
-                <label class="pull-right">Tax : </label>
+                <label class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tax: </label>
             </div>
         </div>
         <div class="row">

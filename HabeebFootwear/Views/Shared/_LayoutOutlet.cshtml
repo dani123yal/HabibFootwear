@@ -84,10 +84,8 @@
                                 <!-- Menu Body -->
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-primary btn-flat">Change Password</a>
-                                    </div>
-                                    <div class="pull-right">
+                                   
+                                    <div class="text-center">
                                         <a href="/account/logout" class="btn btn-primary btn-flat">Sign out</a>
                                     </div>
                                 </li>
@@ -120,7 +118,7 @@
                     <li class="header">MAIN NAVIGATION</li>
 
                     <li class="@ViewBag.dashboard">
-                        <a href="#">
+                        <a href="/Home/Outlet">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             <span class="pull-right-container">
                             </span>
@@ -129,23 +127,31 @@
 
                     <li class="@ViewBag.PointOfSale">
                         <a href="/PointOfSale/index">
-                            <i class="fa fa-dashboard"></i> <span>Point Of Sale</span>
+                            <i class="glyphicon glyphicon-calendar"></i> <span>Point Of Sale</span>
                             <span class="pull-right-container">
                             </span>
                         </a>
                     </li>
 
-                    <li class="@ViewBag.dashboard">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Order History</span>
+                    <li class="@ViewBag.salesHistory">
+                        <a href="/pointofsale/saleshistory">
+                            <i class="glyphicon glyphicon-list-alt"></i> <span>Sales History</span>
                             <span class="pull-right-container">
                             </span>
                         </a>
                     </li>
 
-                    <li class="@ViewBag.dashboard">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Custom Orders</span>
+                    <li class="@ViewBag.outlet">
+                        <a href="/outlet/index">
+                            <i class="fa fa-database"></i> <span>Stock</span>
+                            <span class="pull-right-container">
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="@ViewBag.customOrders">
+                        <a href="/pointofsale/customorders">
+                            <i class="glyphicon glyphicon-gift"></i> <span>Custom Orders</span>
                             <span class="pull-right-container">
                             </span>
                         </a>
@@ -203,8 +209,7 @@
                 <b>Version</b> 2.4.13
             </div>
 
-            <strong>Copyright &copy; 2014-2019 <a href="~/Theme/AdminLTE-2.4.13/https://adminlte.io">Frapps</a>.</strong> All rights
-            reserved.
+            <strong>Made with <i class="fa fa-heart" style="padding:2px;color:red;"></i> by<a href="#"> Aashir</a> </strong>
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark" style="display: none;">

@@ -115,6 +115,7 @@
                             </select>
 
                             <script>
+                               
                                 $('#shoess').on('select2:select', function (e) {
                                     //alert($('#shoess').select2('data')[0].text);
                                     qwe($('#shoess').select2('data')[0].text);
@@ -154,7 +155,7 @@
                         <div class="form-group">
                             <label>Quantity</label>
                             
-                            <input type="text" id="batch" style="width: 100%;">
+                            <input type="number" id="batch" style="width: 100%;padding-left:4px;" min="1" value="1">
 
                         </div>
                         <!-- /.form-group -->
@@ -240,9 +241,11 @@
                 , success: function (data) {
                     //alert(data);
                     $("#sizes").html(data);
+                    twe($('#shoess').find('option:selected').val(), $('#sizes').find('option:selected').val());
                 }
             });
     }
+    qwe($('#shoess').find('option:selected').val());
 </script>
 
 <script>
@@ -250,7 +253,10 @@
     document.getElementById("total").innerText = "0";
 
     function checkout() {
-
+        if (window.i == 0) {
+            alert("Empty Cart");
+            return;
+        }
         
 
         var w = "";
@@ -274,6 +280,8 @@
 
 
         w += "&total=" + document.getElementById("total").innerText;
+
+        //alert(w);
        // alert(w);
 
 
@@ -316,6 +324,7 @@
                 }
             });
     }
+    
 </script>
 <script>
     window.i = 0;
@@ -325,6 +334,7 @@
     window.array3 = [];
     window.array4 = [];
     $('#Add').click(function () {
+        
         var Article = $("#shoess option:selected").text();
         var Size = $("#sizes option:selected").text();
         var Color = $("#colors option:selected").text();
