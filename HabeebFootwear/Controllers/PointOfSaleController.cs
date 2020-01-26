@@ -75,7 +75,7 @@ namespace HabeebFootwear.Controllers
                 dateOfOrder = DateTime.Now,
 
                 discount = 0,
-                employee_Id = 1,
+                employee_Id = 1009,
                 finalAmount = int.Parse(total),
                 totalAmount = int.Parse(total),
                 deleteRemarks = "a"
@@ -96,7 +96,7 @@ namespace HabeebFootwear.Controllers
                 var temp4 = quantity[i];
                 l.Add(new Models.ShoeSizeColor_CustomerOrder()
                 {
-                    batch_Id = 1,
+                    batch_Id = 30,
                     customerOrder_Id = id,
                     price = Miscellaneous.HabibDataClass.Habib.Shoes.Where(c => c.shoeArticle.Equals(temp1)).First().shoePrice,
                     quantity = int.Parse(temp4),

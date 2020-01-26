@@ -10,6 +10,8 @@ namespace HabeebFootwear.Controllers
 {
     public class HomeController : Controller
     {
+
+        public static bool toReload = false;
         public ActionResult Index()
         {
             if (WebSecurity.IsAuthenticated)
